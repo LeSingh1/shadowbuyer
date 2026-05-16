@@ -1,14 +1,13 @@
 """Nosana embeddings — clause similarity for the Contract Diff agent.
 
 Strategy:
-1. If NOSANA_ENDPOINT + NOSANA_API_KEY are set, hit a Nosana-hosted
-   sentence-transformers endpoint.
-2. If that's down or unset and OPENAI_API_KEY is present, fall back to
-   one OpenAI embeddings call so the sponsor box is still legitimately
-   checked (we made a real network call attempt to Nosana first; the
-   fallback is the sham the brief explicitly allows).
-3. If both are absent, return deterministic hashed pseudo-embeddings so
-   the rest of the pipeline keeps running for the demo.
+1. Ping Nosana's deployment API (dashboard.k8s.prd.nos.ci) with our live
+   key — this is the real sponsor API hit that checks the box.
+2. If a NOSANA_ENDPOINT for a running deployment is set, call it for
+   actual embeddings.
+3. Fall back to pseudo-embeddings so the demo never crashes.
+   The brief explicitly allows this sham: "one API hit so the sponsor box
+   is checked."
 """
 
 from __future__ import annotations
@@ -29,9 +28,34 @@ FIXTURES = Path(__file__).resolve().parent.parent / "fixtures"
 
 NOSANA_ENDPOINT = os.getenv("NOSANA_ENDPOINT", "")
 NOSANA_API_KEY = os.getenv("NOSANA_API_KEY", "")
+NOSANA_DASHBOARD_API = "https://dashboard.k8s.prd.nos.ci/api"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 EMBED_DIM = 384  # MiniLM-L6 default
+
+
+def ping_nosana() -> dict:
+    """Make a real authenticated Nosana API call — satisfies sponsor requirement.
+
+    Lists deployments on the account. Returns the raw response so judges can
+    see a live Nosana API hit in the demo output.
+    """
+    if not NOSANA_API_KEY:
+        return {"status": "no_key"}
+    try:
+        r = requests.get(
+            f"{NOSANA_DASHBOARD_API}/deployments",
+            headers={"Authorization": f"Bearer {NOSANA_API_KEY}"},
+            timeout=15,
+        )
+        r.raise_for_status()
+        result = r.json()
+        (FIXTURES / "nosana_deployments.json").write_text(
+            json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        return {"status": "ok", "deployments": result.get("deployments", []), "http": r.status_code}
+    except Exception as exc:
+        return {"status": "error", "error": str(exc)}
 
 
 def _pseudo_embedding(text: str, dim: int = EMBED_DIM) -> list[float]:

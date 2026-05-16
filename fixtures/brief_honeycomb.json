@@ -1,0 +1,28 @@
+{
+  "vendor": "Honeycomb",
+  "slug": "honeycomb",
+  "generated_at": 1778962200,
+  "list_quote": {
+    "raw": "$130/mo Pro + usage",
+    "parsed_usd": 130.0,
+    "discount_offered_by_ae": "20% startup credit, 6 months"
+  },
+  "recommended_counter": "$110.50",
+  "walk_away_threshold": "$104.00",
+  "leverage_points": [
+    "G2 reviewers call out pricing pain: \"Events-based pricing is predictable — much easier to budget for serverless and container workloads....\"",
+    "Recent reliability incident: Get email notifications whenever Honeycomb creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: seconds Didn't receive ",
+    "AE volunteered competitive intel (use as counter): \"Splunk costs 10x for half the cardinality.\""
+  ],
+  "competitor_alternatives": [
+    "datadog",
+    "newrelic",
+    "grafana",
+    "splunk"
+  ],
+  "ae_email": "ae@honeycomb.io",
+  "g2_rating": 4.7,
+  "g2_review_count": 318,
+  "funding_status": "Private",
+  "trash_talk_intel": "Splunk costs 10x for half the cardinality."
+}

@@ -1,0 +1,29 @@
+{
+  "vendor": "New Relic",
+  "slug": "newrelic",
+  "generated_at": 1778962199,
+  "list_quote": {
+    "raw": "$0.30/GB ingest, $99/user/mo",
+    "parsed_usd": 0.3,
+    "discount_offered_by_ae": "15% if committed by EOQ"
+  },
+  "recommended_counter": "$0.26",
+  "walk_away_threshold": "$0.24",
+  "leverage_points": [
+    "New Relic went private — new owners need logos; use pricing instability angle.",
+    "G2 reviewers call out pricing pain: \"The pricing structure is volatile and easily scales with high volumes of publication/population rates, which can make bu...\"",
+    "Recent reliability incident: Get email notifications whenever New Relic creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: seconds Didn't receive ",
+    "AE volunteered competitive intel (use as counter): \"Datadog will nickel-and-dime you on every custom metric.\""
+  ],
+  "competitor_alternatives": [
+    "datadog",
+    "honeycomb",
+    "grafana",
+    "splunk"
+  ],
+  "ae_email": "ae@newrelic.com",
+  "g2_rating": 4.4,
+  "g2_review_count": 583,
+  "funding_status": "Private (taken private by Francisco Partners + TPG, 2023)",
+  "trash_talk_intel": "Datadog will nickel-and-dime you on every custom metric."
+}

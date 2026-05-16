@@ -2,31 +2,80 @@
   "slug": "datadog",
   "name": "Datadog",
   "g2": {
-    "rating": 4.3,
-    "review_count": 2847,
+    "rating": 4.4,
+    "review_count": 700,
     "review_excerpts": [
-      "Datadog has become our go-to observability platform. The APM traces are excellent, dashboards are flexible, and the Kubernetes integration saved us weeks of setup.",
-      "Pricing creep is the main pain. Every feature is a separate SKU. We tripled our bill in 18 months as we added more hosts and custom metrics.",
-      "Incredibly powerful for a team that can invest in setup. The learning curve is steep but worth it for production-grade observability at scale.",
-      "The UI is genuinely best-in-class. Dashboards feel like a product that engineers actually use, not an ops afterthought.",
-      "Support is slow for non-enterprise tiers. Took 4 days to get a response on a billing question. The product itself is solid though."
+      "It is a complete IT infrastructure solution that allows you to monitor infrastructure, applications, logs, traces, and security events all in one place.",
+      "It support all kind of integration and you can if if you face any issue customer support is outstanding.",
+      "Dashboards & Visualizations makes easy to diagnose the issue. Configuration and implementation is easy supports all kind of OS, docker, K8s.",
+      "Smart alerts with machine learning-based anomaly detection help catch issues before they escalate. Review collected by and hosted on G2.com.",
+      "While Datadog is powerful and feature-rich, it can take some time to fully learn and configure for new users. Review collected by and hosted on G2.com."
     ],
     "source_url": "https://www.g2.com/products/datadog/reviews",
-    "served_from_cache": true
+    "served_from_cache": false
   },
   "pricing": {
-    "prices_seen": ["$0/host", "$15/host/month", "$23/host/month", "$2,300/host/year", "$0.10/million log events"],
-    "plan_headings": ["Free", "Pro", "Enterprise", "APM", "Log Management", "Infrastructure", "NPM"],
+    "prices_seen": [
+      "$2 per container",
+      "$3.5 per 10K",
+      "$240 per month",
+      "$200 per month",
+      "$160 per month",
+      "$4.20 per 10K",
+      "$5.00 per 10K",
+      "$1.50 per 10K",
+      "$3 per 10K",
+      "$4 per 10K",
+      "$2.50 per 1",
+      "$2.9 per active",
+      "$4.40",
+      "$1,000",
+      "$0.05 per GB",
+      "$0.07 per GB",
+      "$24"
+    ],
+    "plan_headings": [
+      "Pricing",
+      "Code Coverage",
+      "Features",
+      "Support Plans & Post Sales Services",
+      "Common Questions",
+      "Log Management",
+      "Features",
+      "Support Plans & Post Sales Services",
+      "Common Questions",
+      "Bits AI SRE Investigations",
+      "Support Plans & Post Sales Services",
+      "Common Questions",
+      "Feature Flags",
+      "Features",
+      "Support Plans & Post Sales Services",
+      "Common Questions",
+      "Infrastructure",
+      "See inside any stack, any app, at any scale, anywhere",
+      "Features",
+      "Support Plans & Post Sales Services"
+    ],
     "source_url": "https://www.datadoghq.com/pricing/"
   },
   "status": {
-    "indicators_present": ["operational"],
+    "current_status": "Degraded",
+    "indicators_present": [
+      "operational",
+      "degraded",
+      "partial outage",
+      "major outage",
+      "investigating",
+      "monitoring"
+    ],
     "recent_incidents": [
-      "Resolved - Feb 2024: Elevated error rates on metrics ingestion in us-east-1. Duration: 47 min.",
-      "Resolved - Nov 2023: APM trace search degraded performance. Duration: 2h 13min."
+      "Resolved - This incident has been resolved and Azure metrics are reporting as expected. May 15 , 23:43 EDT",
+      "This incident has been resolved and Azure metrics are reporting as expected.",
+      "Investigating - We are investigating an issue submitting Azure metrics. May 15 , 22:17 EDT",
+      "We are investigating an issue submitting Azure metrics.",
+      "Resolved - This incident has been resolved. May 14 , 15:48 EDT Monitoring - A fix has been implemented and we are monitoring the results. May 14 , 14:48 EDT Investigating - We are investigating increased latency querying Metrics. As a result of this issue, some users may experience delays loading graphs in dashboards and notebooks, and delayed monitor evaluations. May 14 , 14:24 EDT"
     ],
     "source_url": "https://status.datadoghq.com/"
   },
-  "customer_logos_hint": "https://www.datadoghq.com/",
-  "_mock": true
+  "customer_logos_hint": "https://www.datadoghq.com/"
 }

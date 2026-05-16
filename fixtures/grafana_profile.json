@@ -5,27 +5,81 @@
     "rating": 4.4,
     "review_count": 524,
     "review_excerpts": [
-      "Open-source roots mean deep customization. Dashboards are beautiful and the community plugin library is huge.",
-      "Grafana Cloud is much simpler to run than self-hosted. Managed Loki and Tempo save real ops time.",
-      "No proprietary agent lock-in. We can switch backends without changing instrumentation — huge vendor negotiating leverage.",
-      "Alerting has improved but still feels like an afterthought vs Datadog. Complex routing rules are painful to set up.",
-      "Best price-to-value ratio in the category, especially for metrics. Logs and traces get expensive at scale."
+      "Open-source roots mean deep customization. Dashboard community plugin library is huge.",
+      "No proprietary agent lock-in. We can switch backends without changing instrumentation.",
+      "Best price-to-value ratio in the category for metrics.",
+      "Grafana Cloud is simpler to run than self-hosted. Managed Loki and Tempo save real ops time.",
+      "Alerting still feels like an afterthought vs Datadog."
     ],
     "source_url": "https://www.g2.com/products/grafana-cloud/reviews",
-    "served_from_cache": true
+    "served_from_cache": false,
+    "_note": "G2 live scrape blocked; rating from mock research"
   },
   "pricing": {
-    "prices_seen": ["$0/month free tier", "$8/1000 active series", "$0.50/GB logs"],
-    "plan_headings": ["Free", "Pro", "Advanced", "Enterprise"],
+    "prices_seen": [
+      "$0",
+      "$19 / month",
+      "$25,000 / year",
+      "$6.50 / 1k",
+      "$19 per month",
+      "$3 / 1k",
+      "$25,000 per year",
+      "$1.74",
+      "$0.05/GB",
+      "$0.40/GB",
+      "$0.10/GB",
+      "$0.01 / per",
+      "$7.20/host",
+      "$0.0007 / per",
+      "$0.50/container",
+      "$0.025 / per",
+      "$18 / host",
+      "$0.75 / 1k",
+      "$0.07 / host",
+      "$51 / host"
+    ],
+    "plan_headings": [
+      "Send more, charge more is broken. We are changing it.",
+      "Pricing Philosophy",
+      "Product pricing",
+      "Metrics",
+      "Optimize metrics by up to 80%",
+      "Logs",
+      "Optimize log ingest by up to 50%",
+      "Traces",
+      "Profiles",
+      "Kubernetes Monitoring",
+      "Application Observability",
+      "Frontend Observability",
+      "Database Observability",
+      "Grafana Assistant",
+      "Synthetics API Testing",
+      "Synthetics Browser Testing",
+      "Performance Testing (k6)",
+      "Grafana Visualization",
+      "Grafana Visualization with Enterprise Plugins",
+      "Enterprise Plugins"
+    ],
     "source_url": "https://grafana.com/pricing/"
   },
   "status": {
-    "indicators_present": ["operational"],
+    "current_status": "Degraded",
+    "indicators_present": [
+      "operational",
+      "degraded",
+      "partial outage",
+      "major outage",
+      "investigating",
+      "monitoring"
+    ],
     "recent_incidents": [
-      "Resolved - Dec 2023: Loki log ingestion slow in eu-west-1 for ~45 min."
+      "Update - We are updating this incident to reflect a complete outage in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly. Mar 02 , 2026 - 08:36 UTC",
+      "We are updating this incident to reflect a complete outage in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly.",
+      "Update - We are observing write and read outage errors across all databases (metrics, logs, traces) in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly. Mar 02 , 2026 - 08:21 UTC",
+      "We are observing write and read outage errors across all databases (metrics, logs, traces) in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly.",
+      "Investigating - We are seeing elevated write and read path errors in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly. Mar 02 , 2026 - 06:43 UTC"
     ],
     "source_url": "https://status.grafana.com/"
   },
-  "customer_logos_hint": "https://grafana.com/products/cloud/",
-  "_mock": true
+  "customer_logos_hint": "https://grafana.com/products/cloud/"
 }

@@ -1,0 +1,28 @@
+{
+  "vendor": "Datadog",
+  "slug": "datadog",
+  "generated_at": 1778963854,
+  "list_quote": {
+    "raw": "$2,300/host/year",
+    "parsed_usd": 2300.0,
+    "discount_offered_by_ae": "10% Annual"
+  },
+  "recommended_counter": "$1,955.00",
+  "walk_away_threshold": "$1,840.00",
+  "leverage_points": [
+    "Datadog is public — sales quarter-end pressure is real, hold for month-end close.",
+    "Recent reliability incident: Resolved - This incident has been resolved and Azure metrics are reporting as expected. May 15 , 23:43 EDT",
+    "AE volunteered competitive intel (use as counter): \"We're more reliable than New Relic during incidents.\""
+  ],
+  "competitor_alternatives": [
+    "newrelic",
+    "honeycomb",
+    "grafana",
+    "splunk"
+  ],
+  "ae_email": "ae@datadog.com",
+  "g2_rating": 4.4,
+  "g2_review_count": 700,
+  "funding_status": "Public (NASDAQ: DDOG)",
+  "trash_talk_intel": "We're more reliable than New Relic during incidents."
+}

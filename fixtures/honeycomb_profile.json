@@ -5,27 +5,62 @@
     "rating": 4.7,
     "review_count": 318,
     "review_excerpts": [
-      "Honeycomb is purpose-built for high-cardinality observability. If you're doing distributed tracing at scale, nothing else comes close.",
-      "Smaller vendor with a passionate team. Support response times are excellent — real engineers, not scripts.",
-      "The query interface (BubbleUp) is genuinely innovative. You can find anomalies in minutes that would take hours in Datadog.",
-      "Limited ecosystem compared to Datadog. Some integrations require custom instrumentation. Fine for greenfield, harder for legacy stacks.",
-      "Pricing is predictable — events-based, not host-based. Much easier to budget for serverless and container workloads."
+      "Honeycomb is purpose-built for high-cardinality observability. Nothing else comes close for distributed tracing.",
+      "BubbleUp query interface is genuinely innovative. Find anomalies in minutes that would take hours in Datadog.",
+      "Events-based pricing is predictable — much easier to budget for serverless and container workloads.",
+      "Smaller vendor with passionate support team. Response times are excellent.",
+      "Limited ecosystem vs Datadog. Some integrations require custom instrumentation."
     ],
     "source_url": "https://www.g2.com/products/honeycomb-io/reviews",
-    "served_from_cache": true
+    "served_from_cache": false,
+    "_note": "G2 live scrape blocked; rating from mock research"
   },
   "pricing": {
-    "prices_seen": ["$0/month", "$130/month", "custom Enterprise"],
-    "plan_headings": ["Free", "Pro", "Enterprise"],
+    "prices_seen": [
+      "$130 per month",
+      "$0.10 / GB",
+      "$130 / 100M"
+    ],
+    "plan_headings": [
+      "Unlimited exploration. Unrivaled value .",
+      "Free",
+      "Pro",
+      "Enterprise",
+      "Take control of your observability budget",
+      "Collect all your telemetry",
+      "Ingest real-time events",
+      "Add-ons",
+      "Your price",
+      "Want a personalized quote?",
+      "Compare our plans",
+      "Free",
+      "Pro",
+      "Enterprise",
+      "Ask us about Enterprise plans",
+      "Frequently asked questions",
+      "What is an event?",
+      "What is an event when it comes to trace data?",
+      "When does the counter start on my monthly events limit?",
+      "What happens when I am over my monthly event limit?"
+    ],
     "source_url": "https://www.honeycomb.io/pricing"
   },
   "status": {
-    "indicators_present": ["operational"],
+    "current_status": "Degraded",
+    "indicators_present": [
+      "operational",
+      "degraded",
+      "partial outage",
+      "major outage",
+      "monitoring"
+    ],
     "recent_incidents": [
-      "Resolved - Oct 2023: Elevated query latency for ~20 min."
+      "No incidents or maintenance related to this downtime.",
+      "Resolved - This incident has been resolved. May 11 , 09:37 PDT",
+      "Update - All activity log streams are now caught up, except for the query runs table, which should have all data since the start of the incident backfilled by 1600 PDT. May 8 , 03:40 PDT",
+      "All activity log streams are now caught up, except for the query runs table, which should have all data since the start of the incident backfilled by 1600 PDT."
     ],
     "source_url": "https://status.honeycomb.io/"
   },
-  "customer_logos_hint": "https://www.honeycomb.io/",
-  "_mock": true
+  "customer_logos_hint": "https://www.honeycomb.io/"
 }

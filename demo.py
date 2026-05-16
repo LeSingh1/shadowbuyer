@@ -15,7 +15,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
+from contract_similarity import run_demo as run_contract_demo
+from negotiation_brief import build_brief
+from nosana_embeddings import ping_nosana
 from scout_interface import get_all_vendors, get_trash_talk, get_vendor, store_negotiation_decision
+from trash_talk_report import build_report as build_trash_talk_report
 
 
 def _hr(label: str) -> None:
@@ -56,14 +60,38 @@ def run_demo(live: bool = False) -> None:
         dig = t.get("competitor_dig", "?")
         print(f"  [{vendor}] \"{dig}\"")
 
-    _hr("5. Storing a sample Negotiation Decision in Evermind")
-    store_negotiation_decision("datadog", {
-        "action": "counter",
-        "target_price": "$1,950/host/year",
-        "rationale": "New Relic went private — use pricing instability as leverage",
-        "leverage": "Splunk/Cisco acquisition uncertainty cited as eval alternative",
-    })
-    print("  Decision stored in Evermind: negotiation_decision/datadog")
+    _hr("5. Negotiation Brief — Datadog golden path")
+    brief = build_brief("datadog")
+    print(f"  List price:   {brief['list_quote']['raw']}")
+    print(f"  Counter:      {brief['recommended_counter']}")
+    print(f"  Walk-away:    {brief['walk_away_threshold']}")
+    print(f"  Leverage ({len(brief['leverage_points'])} points):")
+    for lp in brief["leverage_points"]:
+        print(f"    • {lp[:110]}")
+    print(f"  Brief saved -> fixtures/brief_datadog.json + Evermind negotiation_decision/brief_datadog")
+
+    _hr("5b. Trash-Talk Moat — competitive intel from all AE calls")
+    tt_report = build_trash_talk_report()
+    for entry in tt_report["entries"]:
+        print(f"  [{entry['vendor_speaking']}]: \"{entry['intel'][:80]}\"")
+        print(f"    Play: {entry['how_to_use'][:110]}")
+        print()
+
+    _hr("5b. Nosana — live API ping + clause similarity embeddings")
+    nosana_ping = ping_nosana()
+    nosana_ping = ping_nosana()
+    print(f"  Nosana API ping: status={nosana_ping['status']} http={nosana_ping.get('http', 'N/A')}")
+    contract = run_contract_demo()
+    print(f"  Embedding provider: {contract['embedding_provider']}")
+    for label, r in contract["clause_groups"].items():
+        for cmp in r["comparisons"]:
+            print(f"  [{label}] clause {cmp['clause_a_idx']+1} vs {cmp['clause_b_idx']+1}: "
+                  f"sim={cmp['similarity']:.3f}  risk={cmp['divergence_risk']}")
+    if contract["high_risk_flags"]:
+        print(f"\n  HIGH RISK ({len(contract['high_risk_flags'])} flags):")
+        for flag in contract["high_risk_flags"][:3]:
+            note = flag.get("comparison", {}).get("note", "")
+            print(f"    [{flag['group']}] {note}")
 
     _hr("6. Sponsor Coverage")
     import subprocess

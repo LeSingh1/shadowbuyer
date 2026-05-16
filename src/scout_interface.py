@@ -87,14 +87,24 @@ def get_all_vendors() -> dict[str, dict[str, Any]]:
 
 
 def get_trash_talk() -> list[dict[str, Any]]:
-    """Return all logged instances of AEs trash-talking competitors.
-
-    This is the moat: intelligence that persists across negotiations.
-    """
+    """Return deduplicated AE trash-talk intel, one entry per vendor."""
     records = em.list_bucket("trash_talk")
-    direct = [r["value"] for r in records if r.get("value")]
-    if direct:
-        return direct
+    seen: set[str] = set()
+    result: list[dict[str, Any]] = []
+    for r in records:
+        val = r.get("value", {})
+        vendor = val.get("vendor") or val.get("vendor_speaking")
+        dig = val.get("competitor_dig") or val.get("intel")
+        if not vendor or not dig or dig == "TBD" or vendor in seen:
+            continue
+        # Skip the aggregate moat_report entry
+        if vendor == "ShadowBuyer Competitive Intel":
+            continue
+        seen.add(vendor)
+        result.append({"vendor": vendor, "competitor_dig": dig})
+    if result:
+        return result
+    # Fallback: build from aggregate
     agg = get_all_vendors()
     return [
         {"vendor": v["name"], "competitor_dig": v["trash_talk"]}

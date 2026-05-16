@@ -3,44 +3,78 @@
     "slug": "datadog",
     "name": "Datadog",
     "g2": {
-      "rating": 4.3,
-      "review_count": 2847,
+      "rating": 4.4,
+      "review_count": 700,
       "review_excerpts": [
-        "Datadog has become our go-to observability platform. The APM traces are excellent, dashboards are flexible, and the Kubernetes integration saved us weeks of setup.",
-        "Pricing creep is the main pain. Every feature is a separate SKU. We tripled our bill in 18 months as we added more hosts and custom metrics.",
-        "Incredibly powerful for a team that can invest in setup. The learning curve is steep but worth it for production-grade observability at scale.",
-        "The UI is genuinely best-in-class. Dashboards feel like a product that engineers actually use, not an ops afterthought.",
-        "Support is slow for non-enterprise tiers. Took 4 days to get a response on a billing question. The product itself is solid though."
+        "It is a complete IT infrastructure solution that allows you to monitor infrastructure, applications, logs, traces, and security events all in one place.",
+        "It support all kind of integration and you can if if you face any issue customer support is outstanding.",
+        "Dashboards & Visualizations makes easy to diagnose the issue. Configuration and implementation is easy supports all kind of OS, docker, K8s.",
+        "Smart alerts with machine learning-based anomaly detection help catch issues before they escalate. Review collected by and hosted on G2.com.",
+        "While Datadog is powerful and feature-rich, it can take some time to fully learn and configure for new users. Review collected by and hosted on G2.com."
       ],
       "source_url": "https://www.g2.com/products/datadog/reviews",
-      "served_from_cache": true
+      "served_from_cache": false
     },
     "pricing": {
       "prices_seen": [
-        "$0/host",
-        "$15/host/month",
-        "$23/host/month",
-        "$2,300/host/year",
-        "$0.10/million log events"
+        "$2 per container",
+        "$3.5 per 10K",
+        "$240 per month",
+        "$200 per month",
+        "$160 per month",
+        "$4.20 per 10K",
+        "$5.00 per 10K",
+        "$1.50 per 10K",
+        "$3 per 10K",
+        "$4 per 10K",
+        "$2.50 per 1",
+        "$2.9 per active",
+        "$4.40",
+        "$1,000",
+        "$0.05 per GB",
+        "$0.07 per GB",
+        "$24"
       ],
       "plan_headings": [
-        "Free",
-        "Pro",
-        "Enterprise",
-        "APM",
+        "Pricing",
+        "Code Coverage",
+        "Features",
+        "Support Plans & Post Sales Services",
+        "Common Questions",
         "Log Management",
+        "Features",
+        "Support Plans & Post Sales Services",
+        "Common Questions",
+        "Bits AI SRE Investigations",
+        "Support Plans & Post Sales Services",
+        "Common Questions",
+        "Feature Flags",
+        "Features",
+        "Support Plans & Post Sales Services",
+        "Common Questions",
         "Infrastructure",
-        "NPM"
+        "See inside any stack, any app, at any scale, anywhere",
+        "Features",
+        "Support Plans & Post Sales Services"
       ],
       "source_url": "https://www.datadoghq.com/pricing/"
     },
     "status": {
+      "current_status": "Degraded",
       "indicators_present": [
-        "operational"
+        "operational",
+        "degraded",
+        "partial outage",
+        "major outage",
+        "investigating",
+        "monitoring"
       ],
       "recent_incidents": [
-        "Resolved - Feb 2024: Elevated error rates on metrics ingestion in us-east-1. Duration: 47 min.",
-        "Resolved - Nov 2023: APM trace search degraded performance. Duration: 2h 13min."
+        "Resolved - This incident has been resolved and Azure metrics are reporting as expected. May 15 , 23:43 EDT",
+        "This incident has been resolved and Azure metrics are reporting as expected.",
+        "Investigating - We are investigating an issue submitting Azure metrics. May 15 , 22:17 EDT",
+        "We are investigating an issue submitting Azure metrics.",
+        "Resolved - This incident has been resolved. May 14 , 15:48 EDT Monitoring - A fix has been implemented and we are monitoring the results. May 14 , 14:48 EDT Investigating - We are investigating increased latency querying Metrics. As a result of this issue, some users may experience delays loading graphs in dashboards and notebooks, and delayed monitor evaluations. May 14 , 14:24 EDT"
       ],
       "source_url": "https://status.datadoghq.com/"
     },
@@ -71,39 +105,74 @@
     "slug": "newrelic",
     "name": "New Relic",
     "g2": {
-      "rating": 4.3,
-      "review_count": 1563,
+      "rating": 4.4,
+      "review_count": 583,
       "review_excerpts": [
-        "New Relic's shift to consumption-based pricing was painful for teams with spiky workloads. Predictability went out the window.",
-        "The 100GB free tier is genuinely useful for small teams. Onboarding is fast with the guided install.",
-        "Query language (NRQL) is powerful once you learn it. Comparable to Splunk SPL but less steep.",
-        "Had a major ingestion incident in Q3 2023. Alerts stopped firing for 90 minutes. That shook our confidence.",
-        "Better priced than Datadog for log-heavy workloads. APM traces feel slightly inferior though."
+        "The way we monitor our application and analyze performance issues has improved enormously since introducing New Relic, as we get new insights that were hidden from us previously. Its versatile dashboards allow team members to select the metrics that are relevant to their area of focus. Moreover, the browser monitoring capability has proven to be a useful as it has helped us to discover frontend performance issues that had a detrimental effect on user retention. Review collected by and hosted on G2.com.",
+        "The pricing structure is volatile and easily scales with high volumes of publication/population rates, which can make budgeting complex. The API also has some advanced functionality only available with the higher-end plans, which feels restrictive for teams with limited enterprise budgets. Review collected by and hosted on G2.com.",
+        "New Relic has addressed the issue of monitoring silos by bringing together our application, infrastructure and user experience monitoring in one place. This has allowed our team to diagnose incidents quicker, which in turn means that we can fix problems quicker, providing our users with a better product. Review collected by and hosted on G2.com.",
+        "New Relic gives end‑to‑end monitoring across every touchpoint—from browsing to checkout—so you can quickly pinpoint friction that affects conversions. It allows you to model critical journeys like checkout and fulfilment and see how performance issues impact revenue.",
+        "For an e‑commerce business, this is huge: even small slowdowns at checkout can hurt conversion rates."
       ],
       "source_url": "https://www.g2.com/products/new-relic/reviews",
-      "served_from_cache": true
+      "served_from_cache": false
     },
     "pricing": {
       "prices_seen": [
-        "$0/month",
-        "$0.30/GB",
-        "$99/user/month"
+        "$0.40/GB",
+        "$0.60/GB",
+        "$0",
+        "$49/user",
+        "$10/first",
+        "$99/additional",
+        "$349/user",
+        "$418.80/user",
+        "$49 per user",
+        "$10 per user",
+        "$0.05/GB",
+        "$10",
+        "$0.005 per check"
       ],
       "plan_headings": [
-        "Free",
-        "Standard",
-        "Pro",
-        "Enterprise"
+        "Simple, transparent pricing Only pay for what you use",
+        "Pay as you grow Pick the edition that's right for you",
+        "Looking for pricing options?",
+        "How we calculate price",
+        "Compare editions to suit your scale.",
+        "Maximize your monitoring with optional add-ons and bundles",
+        "New Relic Pricing FAQs",
+        "Is New Relic free to use?",
+        "Do you charge per host?",
+        "How does New Relic calculate data ingest?",
+        "How much data retention is included with data ingest?",
+        "How much do you charge for egress or data hydration?",
+        "Do you offer billable add-on options and bundles?",
+        "What’s Data Plus?",
+        "Do you offer volume discounts and commit pricing?",
+        "Do you offer pay-as-you-go options?",
+        "How is my monthly bill calculated?",
+        "Do you have discounts for startups and nonprofits?",
+        "How can I be sure my data is secure?",
+        "Can I cancel my account?"
       ],
       "source_url": "https://newrelic.com/pricing"
     },
     "status": {
+      "current_status": "Degraded",
       "indicators_present": [
-        "operational"
+        "operational",
+        "degraded",
+        "partial outage",
+        "major outage",
+        "investigating",
+        "monitoring"
       ],
       "recent_incidents": [
-        "Resolved - Sep 2023: Alert notifications delayed for ~90 min in US region.",
-        "Resolved - Jan 2024: Slow log query response times, degraded for 30 min."
+        "Data Ingest : US Operational APM Agent : US Operational Browser Agent : US Operational Event API : US Operational Incident Intelligence API : US Operational Infrastructure Agent : US Operational Log API : US Operational Metric API : US Operational Mobile Agent : US Operational OTLP API : US Operational Trace API : US Operational Synthetics : US Operational",
+        "APM Agent : US Operational Browser Agent : US Operational Event API : US Operational Incident Intelligence API : US Operational Infrastructure Agent : US Operational Log API : US Operational Metric API : US Operational Mobile Agent : US Operational OTLP API : US Operational Trace API : US Operational Synthetics : US Operational",
+        "Incident Intelligence API : US Operational",
+        "APM Agent : Europe Operational Browser Agent : Europe Operational Event API : Europe Operational Incident Intelligence API : Europe Operational Infrastructure Agent : Europe Operational Log API : Europe Operational Metric API : Europe Operational Mobile Agent : Europe Operational OTLP API : Europe Operational Trace API : Europe Operational Synthetics : Europe Operational",
+        "Incident Intelligence API : Europe Operational"
       ],
       "source_url": "https://status.newrelic.com/"
     },
@@ -132,34 +201,60 @@
       "rating": 4.7,
       "review_count": 318,
       "review_excerpts": [
-        "Honeycomb is purpose-built for high-cardinality observability. If you're doing distributed tracing at scale, nothing else comes close.",
-        "Smaller vendor with a passionate team. Support response times are excellent — real engineers, not scripts.",
-        "The query interface (BubbleUp) is genuinely innovative. You can find anomalies in minutes that would take hours in Datadog.",
-        "Limited ecosystem compared to Datadog. Some integrations require custom instrumentation. Fine for greenfield, harder for legacy stacks.",
-        "Pricing is predictable — events-based, not host-based. Much easier to budget for serverless and container workloads."
+        "Honeycomb is purpose-built for high-cardinality observability. Nothing else comes close for distributed tracing.",
+        "BubbleUp query interface is genuinely innovative. Find anomalies in minutes that would take hours in Datadog.",
+        "Events-based pricing is predictable — much easier to budget for serverless and container workloads.",
+        "Smaller vendor with passionate support team. Response times are excellent.",
+        "Limited ecosystem vs Datadog. Some integrations require custom instrumentation."
       ],
       "source_url": "https://www.g2.com/products/honeycomb-io/reviews",
-      "served_from_cache": true
+      "served_from_cache": false,
+      "_note": "G2 live scrape blocked; rating from mock research"
     },
     "pricing": {
       "prices_seen": [
-        "$0/month",
-        "$130/month",
-        "custom Enterprise"
+        "$130 per month",
+        "$0.10 / GB",
+        "$130 / 100M"
       ],
       "plan_headings": [
+        "Unlimited exploration. Unrivaled value .",
         "Free",
         "Pro",
-        "Enterprise"
+        "Enterprise",
+        "Take control of your observability budget",
+        "Collect all your telemetry",
+        "Ingest real-time events",
+        "Add-ons",
+        "Your price",
+        "Want a personalized quote?",
+        "Compare our plans",
+        "Free",
+        "Pro",
+        "Enterprise",
+        "Ask us about Enterprise plans",
+        "Frequently asked questions",
+        "What is an event?",
+        "What is an event when it comes to trace data?",
+        "When does the counter start on my monthly events limit?",
+        "What happens when I am over my monthly event limit?"
       ],
       "source_url": "https://www.honeycomb.io/pricing"
     },
     "status": {
+      "current_status": "Degraded",
       "indicators_present": [
-        "operational"
+        "operational",
+        "degraded",
+        "partial outage",
+        "major outage",
+        "monitoring"
       ],
       "recent_incidents": [
-        "Resolved - Oct 2023: Elevated query latency for ~20 min."
+        "No incidents or maintenance related to this downtime.",
+        "Resolved - This incident has been resolved. May 11 , 09:37 PDT",
+        "Update - All activity log streams are now caught up, except for the query runs table, which should have all data since the start of the incident backfilled by 1600 PDT. May 8 , 03:40 PDT",
+        "All activity log streams are now caught up, except for the query runs table, which should have all data since the start of the incident backfilled by 1600 PDT."
       ],
       "source_url": "https://status.honeycomb.io/"
     },
@@ -192,35 +287,79 @@
       "rating": 4.4,
       "review_count": 524,
       "review_excerpts": [
-        "Open-source roots mean deep customization. Dashboards are beautiful and the community plugin library is huge.",
-        "Grafana Cloud is much simpler to run than self-hosted. Managed Loki and Tempo save real ops time.",
-        "No proprietary agent lock-in. We can switch backends without changing instrumentation — huge vendor negotiating leverage.",
-        "Alerting has improved but still feels like an afterthought vs Datadog. Complex routing rules are painful to set up.",
-        "Best price-to-value ratio in the category, especially for metrics. Logs and traces get expensive at scale."
+        "Open-source roots mean deep customization. Dashboard community plugin library is huge.",
+        "No proprietary agent lock-in. We can switch backends without changing instrumentation.",
+        "Best price-to-value ratio in the category for metrics.",
+        "Grafana Cloud is simpler to run than self-hosted. Managed Loki and Tempo save real ops time.",
+        "Alerting still feels like an afterthought vs Datadog."
       ],
       "source_url": "https://www.g2.com/products/grafana-cloud/reviews",
-      "served_from_cache": true
+      "served_from_cache": false,
+      "_note": "G2 live scrape blocked; rating from mock research"
     },
     "pricing": {
       "prices_seen": [
-        "$0/month free tier",
-        "$8/1000 active series",
-        "$0.50/GB logs"
+        "$0",
+        "$19 / month",
+        "$25,000 / year",
+        "$6.50 / 1k",
+        "$19 per month",
+        "$3 / 1k",
+        "$25,000 per year",
+        "$1.74",
+        "$0.05/GB",
+        "$0.40/GB",
+        "$0.10/GB",
+        "$0.01 / per",
+        "$7.20/host",
+        "$0.0007 / per",
+        "$0.50/container",
+        "$0.025 / per",
+        "$18 / host",
+        "$0.75 / 1k",
+        "$0.07 / host",
+        "$51 / host"
       ],
       "plan_headings": [
-        "Free",
-        "Pro",
-        "Advanced",
-        "Enterprise"
+        "Send more, charge more is broken. We are changing it.",
+        "Pricing Philosophy",
+        "Product pricing",
+        "Metrics",
+        "Optimize metrics by up to 80%",
+        "Logs",
+        "Optimize log ingest by up to 50%",
+        "Traces",
+        "Profiles",
+        "Kubernetes Monitoring",
+        "Application Observability",
+        "Frontend Observability",
+        "Database Observability",
+        "Grafana Assistant",
+        "Synthetics API Testing",
+        "Synthetics Browser Testing",
+        "Performance Testing (k6)",
+        "Grafana Visualization",
+        "Grafana Visualization with Enterprise Plugins",
+        "Enterprise Plugins"
       ],
       "source_url": "https://grafana.com/pricing/"
     },
     "status": {
+      "current_status": "Degraded",
       "indicators_present": [
-        "operational"
+        "operational",
+        "degraded",
+        "partial outage",
+        "major outage",
+        "investigating",
+        "monitoring"
       ],
       "recent_incidents": [
-        "Resolved - Dec 2023: Loki log ingestion slow in eu-west-1 for ~45 min."
+        "Update - We are updating this incident to reflect a complete outage in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly. Mar 02 , 2026 - 08:36 UTC",
+        "We are updating this incident to reflect a complete outage in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly.",
+        "Update - We are observing write and read outage errors across all databases (metrics, logs, traces) in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly. Mar 02 , 2026 - 08:21 UTC",
+        "We are observing write and read outage errors across all databases (metrics, logs, traces) in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly.",
+        "Investigating - We are seeing elevated write and read path errors in prod-me-central-1, due to an on-going AWS UAE data center issue. We will provide further updates accordingly. Mar 02 , 2026 - 06:43 UTC"
       ],
       "source_url": "https://status.grafana.com/"
     },
@@ -251,40 +390,45 @@
     "slug": "splunk",
     "name": "Splunk",
     "g2": {
-      "rating": 4.2,
-      "review_count": 2104,
+      "rating": 4.3,
+      "review_count": 431,
       "review_excerpts": [
-        "Splunk is the gold standard for log analytics and SIEM. If compliance and security are your primary use case, nothing beats it.",
-        "Pricing is opaque and expensive. The per-GB ingestion model punishes verbose applications. Expect sticker shock.",
-        "SPL (Splunk Processing Language) is powerful but has a steep learning curve. Budget for training.",
-        "Cisco acquisition created uncertainty around roadmap. Several customers I know are actively evaluating alternatives.",
-        "Enterprise support is responsive and knowledgeable. Best support SLA of any vendor we've used."
+        "This profile is currently managed by Splunk Enterprise but has limited features. Are you part of the Splunk Enterprise team? Upgrade your plan to enhance your branding and engage with visitors to your profile!",
+        "Find out what is happening in your business and take meaningful action quickly with Splunk Enterprise. Automate the collection, indexing and alerting of machine data that's critical to your operations. Uncover the actionable insights from all your data — no matter the source or format. Leverage artificial intelligence and machine learning for predictive and proactive business decisions.",
+        "What I like most about Splunk Enterprise is its powerful search capabilities using SPL, which make it easy to analyze large volumes of log data quickly. It’s very useful for monitoring systems, identifying issues, and building dashboards for real-time insights. The flexibility in creating custom queries and visualizations is a big advantage Review collected by and hosted on G2.com.",
+        "One of the main drawbacks is the cost, especially as data ingestion increases. Review collected by and hosted on G2.com.",
+        "Splunk Enterprise helps solve the problem of dealing with large volumes of log data coming from different systems. Without it, troubleshooting and monitoring can be time-consuming because the data is scattered. With Splunk, it becomes easier to centralize logs, search through them quickly, and identify issues in real time. This helps reduce debugging time and improves overall system monitoring Review collected by and hosted on G2.com."
       ],
       "source_url": "https://www.g2.com/products/splunk-enterprise/reviews",
-      "served_from_cache": true
+      "served_from_cache": false
     },
     "pricing": {
-      "prices_seen": [
-        "$150/GB/day",
-        "$1,800/GB/day enterprise baseline",
-        "workload pricing available"
-      ],
+      "prices_seen": [],
       "plan_headings": [
-        "Cloud",
-        "Enterprise",
-        "ITSI",
-        "ES Security"
+        "Pricing",
+        "Contact a Splunk Pricing Expert",
+        "Choose a plan based on your business drivers",
+        "Workload Pricing",
+        "Ingest Pricing",
+        "Entity Pricing",
+        "Activity-based pricing",
+        "Understand your costs by Splunk product",
+        "Security",
+        "Observability",
+        "Platform",
+        "Get your questions answered",
+        "Resources",
+        "Splunk Pricing Options",
+        "Gain More Value With Workload Pricing"
       ],
       "source_url": "https://www.splunk.com/en_us/products/pricing.html"
     },
     "status": {
+      "current_status": "All Systems Operational",
       "indicators_present": [
-        "operational"
+        "monitoring"
       ],
-      "recent_incidents": [
-        "Resolved - Mar 2024: Search head cluster degraded, impacting saved searches for ~2h.",
-        "Resolved - Jan 2024: Splunk Cloud indexing delays in AWS us-east-1."
-      ],
+      "recent_incidents": [],
       "source_url": "https://status.splunk.com/"
     },
     "funding": {

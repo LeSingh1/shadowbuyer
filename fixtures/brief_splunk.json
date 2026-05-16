@@ -1,0 +1,28 @@
+{
+  "vendor": "Splunk",
+  "slug": "splunk",
+  "generated_at": 1778962204,
+  "list_quote": {
+    "raw": "$1,800/GB/day ingest baseline",
+    "parsed_usd": 1800.0,
+    "discount_offered_by_ae": "Volume tier kicks in at 100GB"
+  },
+  "recommended_counter": "$1,530.00",
+  "walk_away_threshold": "$1,440.00",
+  "leverage_points": [
+    "Cisco acquisition creates roadmap uncertainty — use as explicit alternative eval leverage.",
+    "G2 reviewers call out pricing pain: \"One of the main drawbacks is the cost, especially as data ingestion increases. Review collected by and hosted on G2.com....\"",
+    "AE volunteered competitive intel (use as counter): \"Grafana is a hobby toy — we power Fortune 50 SOCs.\""
+  ],
+  "competitor_alternatives": [
+    "datadog",
+    "newrelic",
+    "honeycomb",
+    "grafana"
+  ],
+  "ae_email": "ae@splunk.com",
+  "g2_rating": 4.3,
+  "g2_review_count": 431,
+  "funding_status": "Acquired by Cisco (closed March 2024)",
+  "trash_talk_intel": "Grafana is a hobby toy — we power Fortune 50 SOCs."
+}

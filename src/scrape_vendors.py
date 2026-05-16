@@ -56,20 +56,60 @@ def parse_pricing(html: str) -> dict[str, Any]:
     }
 
 
+_STATUS_NOISE = re.compile(
+    r"(get email|get text|get webhook|get incident|subscribe via|subscribe$|"
+    r"atlassian|recaptcha|privacy policy|terms of service|"
+    r"enter otp|resend otp|didn.t receive|channel.s webhook|"
+    r"microsoft teams|by subscribing|"
+    r"no incidents reported today|no downtime recorded|no data exists|"
+    r"had a major outage\.$|had a partial outage\.$|"
+    r"^operational degraded|partial outage major outage)",
+    re.IGNORECASE,
+)
+
+
 def parse_status(html: str) -> dict[str, Any]:
     soup = _soup(html)
     text = soup.get_text(" ", strip=True).lower()
     indicators = ["operational", "degraded", "partial outage", "major outage", "investigating", "monitoring"]
     found = [w for w in indicators if w in text]
+
     incident_lines = []
-    for li in soup.find_all(["li", "div"]):
-        t = li.get_text(" ", strip=True)
-        if any(k in t.lower() for k in ("incident", "outage", "degraded", "investigating")):
-            if 30 <= len(t) <= 300:
-                incident_lines.append(t)
+    for tag in soup.find_all(["li", "div", "p", "span"]):
+        t = tag.get_text(" ", strip=True)
+        tl = t.lower()
+        if not any(k in tl for k in ("incident", "outage", "degraded", "investigating", "resolved", "disruption")):
+            continue
+        if _STATUS_NOISE.search(t):
+            continue
+        if not (40 <= len(t) <= 400):
+            continue
+        incident_lines.append(t)
+
+    # Deduplicate preserving order
+    seen: set[str] = set()
+    unique: list[str] = []
+    for line in incident_lines:
+        key = line[:60]
+        if key not in seen:
+            seen.add(key)
+            unique.append(line)
+
+    # Atlassian statuspages always list all indicator words in the page even
+    # when everything is healthy. Only treat as degraded if the page has
+    # real incident entries alongside the indicator.
+    active_degraded = any(w in found for w in ("degraded", "partial outage", "major outage", "investigating"))
+    has_real_incidents = bool(unique)
+    if active_degraded and has_real_incidents:
+        current = "Degraded"
+    elif "monitoring" in found and has_real_incidents:
+        current = "Monitoring"
+    else:
+        current = "All Systems Operational"
     return {
+        "current_status": current,
         "indicators_present": found,
-        "recent_incidents": incident_lines[:5],
+        "recent_incidents": unique[:5],
     }
 
 

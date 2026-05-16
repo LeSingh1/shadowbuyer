@@ -2,31 +2,76 @@
   "slug": "newrelic",
   "name": "New Relic",
   "g2": {
-    "rating": 4.3,
-    "review_count": 1563,
+    "rating": 4.4,
+    "review_count": 583,
     "review_excerpts": [
-      "New Relic's shift to consumption-based pricing was painful for teams with spiky workloads. Predictability went out the window.",
-      "The 100GB free tier is genuinely useful for small teams. Onboarding is fast with the guided install.",
-      "Query language (NRQL) is powerful once you learn it. Comparable to Splunk SPL but less steep.",
-      "Had a major ingestion incident in Q3 2023. Alerts stopped firing for 90 minutes. That shook our confidence.",
-      "Better priced than Datadog for log-heavy workloads. APM traces feel slightly inferior though."
+      "The way we monitor our application and analyze performance issues has improved enormously since introducing New Relic, as we get new insights that were hidden from us previously. Its versatile dashboards allow team members to select the metrics that are relevant to their area of focus. Moreover, the browser monitoring capability has proven to be a useful as it has helped us to discover frontend performance issues that had a detrimental effect on user retention. Review collected by and hosted on G2.com.",
+      "The pricing structure is volatile and easily scales with high volumes of publication/population rates, which can make budgeting complex. The API also has some advanced functionality only available with the higher-end plans, which feels restrictive for teams with limited enterprise budgets. Review collected by and hosted on G2.com.",
+      "New Relic has addressed the issue of monitoring silos by bringing together our application, infrastructure and user experience monitoring in one place. This has allowed our team to diagnose incidents quicker, which in turn means that we can fix problems quicker, providing our users with a better product. Review collected by and hosted on G2.com.",
+      "New Relic gives end‑to‑end monitoring across every touchpoint—from browsing to checkout—so you can quickly pinpoint friction that affects conversions. It allows you to model critical journeys like checkout and fulfilment and see how performance issues impact revenue.",
+      "For an e‑commerce business, this is huge: even small slowdowns at checkout can hurt conversion rates."
     ],
     "source_url": "https://www.g2.com/products/new-relic/reviews",
-    "served_from_cache": true
+    "served_from_cache": false
   },
   "pricing": {
-    "prices_seen": ["$0/month", "$0.30/GB", "$99/user/month"],
-    "plan_headings": ["Free", "Standard", "Pro", "Enterprise"],
+    "prices_seen": [
+      "$0.40/GB",
+      "$0.60/GB",
+      "$0",
+      "$49/user",
+      "$10/first",
+      "$99/additional",
+      "$349/user",
+      "$418.80/user",
+      "$49 per user",
+      "$10 per user",
+      "$0.05/GB",
+      "$10",
+      "$0.005 per check"
+    ],
+    "plan_headings": [
+      "Simple, transparent pricing Only pay for what you use",
+      "Pay as you grow Pick the edition that's right for you",
+      "Looking for pricing options?",
+      "How we calculate price",
+      "Compare editions to suit your scale.",
+      "Maximize your monitoring with optional add-ons and bundles",
+      "New Relic Pricing FAQs",
+      "Is New Relic free to use?",
+      "Do you charge per host?",
+      "How does New Relic calculate data ingest?",
+      "How much data retention is included with data ingest?",
+      "How much do you charge for egress or data hydration?",
+      "Do you offer billable add-on options and bundles?",
+      "What’s Data Plus?",
+      "Do you offer volume discounts and commit pricing?",
+      "Do you offer pay-as-you-go options?",
+      "How is my monthly bill calculated?",
+      "Do you have discounts for startups and nonprofits?",
+      "How can I be sure my data is secure?",
+      "Can I cancel my account?"
+    ],
     "source_url": "https://newrelic.com/pricing"
   },
   "status": {
-    "indicators_present": ["operational"],
+    "current_status": "Degraded",
+    "indicators_present": [
+      "operational",
+      "degraded",
+      "partial outage",
+      "major outage",
+      "investigating",
+      "monitoring"
+    ],
     "recent_incidents": [
-      "Resolved - Sep 2023: Alert notifications delayed for ~90 min in US region.",
-      "Resolved - Jan 2024: Slow log query response times, degraded for 30 min."
+      "Data Ingest : US Operational APM Agent : US Operational Browser Agent : US Operational Event API : US Operational Incident Intelligence API : US Operational Infrastructure Agent : US Operational Log API : US Operational Metric API : US Operational Mobile Agent : US Operational OTLP API : US Operational Trace API : US Operational Synthetics : US Operational",
+      "APM Agent : US Operational Browser Agent : US Operational Event API : US Operational Incident Intelligence API : US Operational Infrastructure Agent : US Operational Log API : US Operational Metric API : US Operational Mobile Agent : US Operational OTLP API : US Operational Trace API : US Operational Synthetics : US Operational",
+      "Incident Intelligence API : US Operational",
+      "APM Agent : Europe Operational Browser Agent : Europe Operational Event API : Europe Operational Incident Intelligence API : Europe Operational Infrastructure Agent : Europe Operational Log API : Europe Operational Metric API : Europe Operational Mobile Agent : Europe Operational OTLP API : Europe Operational Trace API : Europe Operational Synthetics : Europe Operational",
+      "Incident Intelligence API : Europe Operational"
     ],
     "source_url": "https://status.newrelic.com/"
   },
-  "customer_logos_hint": "https://newrelic.com/",
-  "_mock": true
+  "customer_logos_hint": "https://newrelic.com/"
 }

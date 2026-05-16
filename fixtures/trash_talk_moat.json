@@ -1,0 +1,43 @@
+{
+  "title": "ShadowBuyer Competitive Intel — Trash-Talk Moat",
+  "generated_at": "2026-05-16T20:37:35Z",
+  "summary": "5 vendors volunteered competitive intel during sales calls. ShadowBuyer captures this automatically and uses it in negotiation.",
+  "entries": [
+    {
+      "vendor_speaking": "Datadog",
+      "their_quote": "$2,300/host/year",
+      "intel": "We're more reliable than New Relic during incidents.",
+      "how_to_use": "Reply to Datadog: 'We appreciate the intel on New Relic. That's exactly why we have a parallel New Relic eval running. If reliability is really your edge, prove it with an SLA-backed uptime guarantee or credits.'",
+      "source": "AE sales call (via Actionbook quote capture)"
+    },
+    {
+      "vendor_speaking": "New Relic",
+      "their_quote": "$0.30/GB ingest, $99/user/mo",
+      "intel": "Datadog will nickel-and-dime you on every custom metric.",
+      "how_to_use": "Reply to New Relic: 'We appreciate the intel on Datadog. That's exactly why we have a parallel Datadog eval running. If total cost of ownership is really your edge, prove it with a price-match or 20%+ discount to justify staying.'",
+      "source": "AE sales call (via Actionbook quote capture)"
+    },
+    {
+      "vendor_speaking": "Honeycomb",
+      "their_quote": "$130/mo Pro + usage",
+      "intel": "Splunk costs 10x for half the cardinality.",
+      "how_to_use": "Reply to Honeycomb: 'We appreciate the intel on Splunk. That's exactly why we have a parallel Splunk eval running. If total cost of ownership is really your edge, prove it with a price-match or 20%+ discount to justify staying.'",
+      "source": "AE sales call (via Actionbook quote capture)"
+    },
+    {
+      "vendor_speaking": "Grafana Cloud",
+      "their_quote": "$8/active series, Pro tier",
+      "intel": "You don't get locked in like with Datadog's proprietary agent.",
+      "how_to_use": "Reply to Grafana Cloud: 'We appreciate the intel on Datadog. That's exactly why we have a parallel Datadog eval running. If lock-in risk is really your edge, prove it with a termination-for-convenience clause with no penalty.'",
+      "source": "AE sales call (via Actionbook quote capture)"
+    },
+    {
+      "vendor_speaking": "Splunk",
+      "their_quote": "$1,800/GB/day ingest baseline",
+      "intel": "Grafana is a hobby toy — we power Fortune 50 SOCs.",
+      "how_to_use": "Feed Splunk's own words back to them: 'Your AE raised those exact concerns about competitors — which is why we're keeping our options open. Help us justify choosing you with a stronger commercial offer.'",
+      "source": "AE sales call (via Actionbook quote capture)"
+    }
+  ],
+  "moat_explanation": "Traditional procurement: you hear one AE's pitch and believe it. ShadowBuyer: you hear ALL AEs trash-talk each other, then use each statement as negotiation leverage against the vendor that made it. Datadog says New Relic has incidents? Tell Datadog you're evaluating New Relic anyway and watch the discount grow."
+}
