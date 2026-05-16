@@ -64,8 +64,8 @@ def _service_mode() -> dict[str, bool]:
         "qwen_live": bool(os.getenv("QWEN_API_KEY")),
         "zai_live": bool(os.getenv("ZAI_API_KEY")),
         "evermind_live": bool(os.getenv("EVERMIND_API_KEY")),
-        "nosana_live": bool(os.getenv("NOSANA_ENDPOINT")),
-        "brightdata_live": bool(os.getenv("BRIGHTDATA_API_KEY")),
+        "nosana_live": bool(os.getenv("NOSANA_API_KEY") or os.getenv("NOSANA_ENDPOINT")),
+        "brightdata_live": bool(os.getenv("BRIGHTDATA_API_TOKEN") or os.getenv("BRIGHTDATA_API_KEY")),
     }
 
 
@@ -75,8 +75,8 @@ _SPONSOR_MAP = [
     {"name": "Qwen Cloud",  "env": ["TOKENROUTER_API_KEY"],       "role": "Scout, Hardball (Qwen3-Max), Referee",            "owner": "Person A", "code_ref": "src/agents/scout.py, negotiator.py"},
     {"name": "Z.ai",        "env": ["TOKENROUTER_API_KEY"],       "role": "Diplomat (GLM-5.1)",                              "owner": "Person A", "code_ref": "src/agents/negotiator.py:_dp_round"},
     {"name": "Evermind",    "env": ["EVERMIND_API_KEY"],          "role": "Vendor profiles, AE quotes, trash-talk, decisions","owner": "Person B", "code_ref": "src/memory/evermind.py + pipeline writes"},
-    {"name": "Nosana",      "env": ["NOSANA_ENDPOINT"],           "role": "Clause similarity embeddings",                    "owner": "Person B", "code_ref": "src/agents/contract_diff.py:_nosana_embed"},
-    {"name": "Bright Data", "env": ["BRIGHTDATA_API_KEY"],        "role": "Vendor research (G2, funding, logos)",            "owner": "Person B", "code_ref": "fixtures/observability_vendors_g2.json, scout.run(bright_data_input=...)"},
+    {"name": "Nosana",      "env": ["NOSANA_API_KEY"],            "role": "Clause similarity embeddings",                    "owner": "Person B", "code_ref": "src/agents/contract_diff.py:_nosana_embed"},
+    {"name": "Bright Data", "env": ["BRIGHTDATA_API_TOKEN"],      "role": "Vendor research (G2, funding, logos)",            "owner": "Person B", "code_ref": "fixtures/observability_vendors_g2.json, scout.run(bright_data_input=...)"},
     {"name": "Actionbook",  "env": [],                            "role": "Quote Hunter form filling (Person B)",            "owner": "Person B", "code_ref": "fixtures/datadog_ae_response.json + src/agents/quote_hunter.py"},
     {"name": "Zeabur",      "env": [],                            "role": "Live deployment",                                  "owner": "Person A", "code_ref": "Dockerfile, zeabur.toml"},
     {"name": "Qoder",       "env": [],                            "role": "Built the codebase (process sponsor)",            "owner": "All",      "code_ref": "(pitch mention)"},
@@ -157,18 +157,25 @@ def _probe_sponsors() -> dict[str, dict[str, Any]]:
             return (200 <= r.status_code < 300, f"HTTP {r.status_code}")  # auth OK if not server-error
         _probe("Evermind", _em)
 
-    # Nosana — POST a 1-token embed probe.
-    if os.getenv("NOSANA_ENDPOINT"):
+    # Nosana — POST a 1-token embed probe with bearer auth if key is set.
+    nosana_key = os.getenv("NOSANA_API_KEY")
+    nosana_endpoint = os.getenv("NOSANA_ENDPOINT")
+    if nosana_key or nosana_endpoint:
         def _ns():
-            endpoint = os.getenv("NOSANA_ENDPOINT", "").rstrip("/")
-            r = httpx.post(f"{endpoint}/embed", json={"texts": ["probe"]}, timeout=3.0)
+            if not nosana_endpoint:
+                return (False, "no NOSANA_ENDPOINT set (have key but no URL)")
+            endpoint = nosana_endpoint.rstrip("/")
+            headers = {"Authorization": f"Bearer {nosana_key}"} if nosana_key else {}
+            r = httpx.post(f"{endpoint}/embed", json={"texts": ["probe"]}, headers=headers, timeout=3.0)
             return (200 <= r.status_code < 300, f"HTTP {r.status_code}")
         _probe("Nosana", _ns)
 
-    # Bright Data — no canonical probe URL without scrape spend; check auth header acceptance.
-    if os.getenv("BRIGHTDATA_API_KEY"):
+    # Bright Data — accept either BRIGHTDATA_API_TOKEN (their naming) or BRIGHTDATA_API_KEY.
+    bd_token = os.getenv("BRIGHTDATA_API_TOKEN") or os.getenv("BRIGHTDATA_API_KEY")
+    if bd_token:
         def _bd():
-            r = httpx.get("https://api.brightdata.com/status", headers={"Authorization": f"Bearer {os.environ['BRIGHTDATA_API_KEY']}"}, timeout=3.0)
+            # /status returns 200 with valid token; 401 with bad token. Conservative timeout.
+            r = httpx.get("https://api.brightdata.com/status", headers={"Authorization": f"Bearer {bd_token}"}, timeout=3.0)
             return (200 <= r.status_code < 300, f"HTTP {r.status_code}")
         _probe("Bright Data", _bd)
 
