@@ -1,0 +1,6 @@
+.env
+.evermind-fallback.json
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
