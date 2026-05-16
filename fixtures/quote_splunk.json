@@ -1,0 +1,25 @@
+{
+  "vendor": "Splunk",
+  "form_url": "https://www.splunk.com/en_us/form/contact-us.html",
+  "test_profile": {
+    "first_name": "Alex",
+    "last_name": "Rivers",
+    "email": "alex.rivers+shadowbuyer@example.com",
+    "company": "Shadowbuyer Inc",
+    "job_title": "VP Engineering",
+    "phone": "+1-415-555-0142",
+    "company_size": "201-500",
+    "country": "United States",
+    "use_case": "Evaluating observability tools to replace incumbent."
+  },
+  "actionbook_run": null,
+  "screenshot_path": null,
+  "submitted": false,
+  "ae_response": {
+    "vendor": "Splunk",
+    "ae_email": "ae@splunk.com",
+    "first_quote": "$1,800/GB/day ingest baseline",
+    "discount_offered": "Volume tier kicks in at 100GB",
+    "competitor_dig": "Grafana is a hobby toy — we power Fortune 50 SOCs."
+  }
+}

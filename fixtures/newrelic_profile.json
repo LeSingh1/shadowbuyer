@@ -1,0 +1,32 @@
+{
+  "slug": "newrelic",
+  "name": "New Relic",
+  "g2": {
+    "rating": 4.3,
+    "review_count": 1563,
+    "review_excerpts": [
+      "New Relic's shift to consumption-based pricing was painful for teams with spiky workloads. Predictability went out the window.",
+      "The 100GB free tier is genuinely useful for small teams. Onboarding is fast with the guided install.",
+      "Query language (NRQL) is powerful once you learn it. Comparable to Splunk SPL but less steep.",
+      "Had a major ingestion incident in Q3 2023. Alerts stopped firing for 90 minutes. That shook our confidence.",
+      "Better priced than Datadog for log-heavy workloads. APM traces feel slightly inferior though."
+    ],
+    "source_url": "https://www.g2.com/products/new-relic/reviews",
+    "served_from_cache": true
+  },
+  "pricing": {
+    "prices_seen": ["$0/month", "$0.30/GB", "$99/user/month"],
+    "plan_headings": ["Free", "Standard", "Pro", "Enterprise"],
+    "source_url": "https://newrelic.com/pricing"
+  },
+  "status": {
+    "indicators_present": ["operational"],
+    "recent_incidents": [
+      "Resolved - Sep 2023: Alert notifications delayed for ~90 min in US region.",
+      "Resolved - Jan 2024: Slow log query response times, degraded for 30 min."
+    ],
+    "source_url": "https://status.newrelic.com/"
+  },
+  "customer_logos_hint": "https://newrelic.com/",
+  "_mock": true
+}

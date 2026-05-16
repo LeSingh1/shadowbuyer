@@ -1,0 +1,25 @@
+{
+  "vendor": "New Relic",
+  "form_url": "https://newrelic.com/contact-sales",
+  "test_profile": {
+    "first_name": "Alex",
+    "last_name": "Rivers",
+    "email": "alex.rivers+shadowbuyer@example.com",
+    "company": "Shadowbuyer Inc",
+    "job_title": "VP Engineering",
+    "phone": "+1-415-555-0142",
+    "company_size": "201-500",
+    "country": "United States",
+    "use_case": "Evaluating observability tools to replace incumbent."
+  },
+  "actionbook_run": null,
+  "screenshot_path": null,
+  "submitted": false,
+  "ae_response": {
+    "vendor": "New Relic",
+    "ae_email": "ae@newrelic.com",
+    "first_quote": "$0.30/GB ingest, $99/user/mo",
+    "discount_offered": "15% if committed by EOQ",
+    "competitor_dig": "Datadog will nickel-and-dime you on every custom metric."
+  }
+}

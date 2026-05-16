@@ -1,0 +1,25 @@
+{
+  "vendor": "Grafana Cloud",
+  "form_url": "https://grafana.com/contact/",
+  "test_profile": {
+    "first_name": "Alex",
+    "last_name": "Rivers",
+    "email": "alex.rivers+shadowbuyer@example.com",
+    "company": "Shadowbuyer Inc",
+    "job_title": "VP Engineering",
+    "phone": "+1-415-555-0142",
+    "company_size": "201-500",
+    "country": "United States",
+    "use_case": "Evaluating observability tools to replace incumbent."
+  },
+  "actionbook_run": null,
+  "screenshot_path": null,
+  "submitted": false,
+  "ae_response": {
+    "vendor": "Grafana Cloud",
+    "ae_email": "ae@grafana.com",
+    "first_quote": "$8/active series, Pro tier",
+    "discount_offered": "Free tier extension + 12% Annual",
+    "competitor_dig": "You don't get locked in like with Datadog's proprietary agent."
+  }
+}

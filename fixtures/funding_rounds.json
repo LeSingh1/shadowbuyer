@@ -1,0 +1,61 @@
+{
+  "datadog": {
+    "name": "Datadog",
+    "status": "Public (NASDAQ: DDOG)",
+    "ipo_date": "2019-09-19",
+    "market_cap_approx": "$38B (May 2024)",
+    "last_private_round": {
+      "type": "Series D",
+      "amount": "$94.5M",
+      "date": "2016-01",
+      "lead": "ICONIQ Capital"
+    },
+    "notable": "Revenue $2.1B FY2023, 28% YoY growth. ARR growing but sales efficiency declining post-2022.",
+    "_source": "mock/Crunchbase"
+  },
+  "newrelic": {
+    "name": "New Relic",
+    "status": "Private (taken private by Francisco Partners + TPG, 2023)",
+    "go_private_date": "2023-11",
+    "go_private_price": "$6.5B",
+    "last_public_market_cap": "$5.8B",
+    "notable": "Went private Nov 2023 after struggling public valuation. New ownership likely to push aggressive discounting to win market share back from Datadog.",
+    "_source": "mock/Crunchbase"
+  },
+  "honeycomb": {
+    "name": "Honeycomb",
+    "status": "Private",
+    "last_round": {
+      "type": "Series D",
+      "amount": "$50M",
+      "date": "2022-08",
+      "lead": "Insight Partners",
+      "total_raised": "$183M"
+    },
+    "notable": "Still burning cash. Under pressure to reach profitability before next raise. May be flexible on pricing for logos.",
+    "_source": "mock/Crunchbase"
+  },
+  "grafana": {
+    "name": "Grafana Labs",
+    "status": "Private",
+    "last_round": {
+      "type": "Series D",
+      "amount": "$240M",
+      "date": "2022-04",
+      "lead": "GIC",
+      "valuation": "$6B",
+      "total_raised": "$681M"
+    },
+    "notable": "Well-capitalized. Open-source flywheel drives low CAC. Can afford aggressive Cloud pricing to convert OSS users.",
+    "_source": "mock/Crunchbase"
+  },
+  "splunk": {
+    "name": "Splunk",
+    "status": "Acquired by Cisco (closed March 2024)",
+    "acquisition_price": "$28B",
+    "acquirer": "Cisco",
+    "close_date": "2024-03-18",
+    "notable": "Cisco acquisition complete. Roadmap uncertainty is real. Enterprise customers are actively exploring alternatives. Strong negotiating angle for ShadowBuyer.",
+    "_source": "mock/Crunchbase"
+  }
+}

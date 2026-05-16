@@ -1,0 +1,31 @@
+{
+  "slug": "honeycomb",
+  "name": "Honeycomb",
+  "g2": {
+    "rating": 4.7,
+    "review_count": 318,
+    "review_excerpts": [
+      "Honeycomb is purpose-built for high-cardinality observability. If you're doing distributed tracing at scale, nothing else comes close.",
+      "Smaller vendor with a passionate team. Support response times are excellent — real engineers, not scripts.",
+      "The query interface (BubbleUp) is genuinely innovative. You can find anomalies in minutes that would take hours in Datadog.",
+      "Limited ecosystem compared to Datadog. Some integrations require custom instrumentation. Fine for greenfield, harder for legacy stacks.",
+      "Pricing is predictable — events-based, not host-based. Much easier to budget for serverless and container workloads."
+    ],
+    "source_url": "https://www.g2.com/products/honeycomb-io/reviews",
+    "served_from_cache": true
+  },
+  "pricing": {
+    "prices_seen": ["$0/month", "$130/month", "custom Enterprise"],
+    "plan_headings": ["Free", "Pro", "Enterprise"],
+    "source_url": "https://www.honeycomb.io/pricing"
+  },
+  "status": {
+    "indicators_present": ["operational"],
+    "recent_incidents": [
+      "Resolved - Oct 2023: Elevated query latency for ~20 min."
+    ],
+    "source_url": "https://status.honeycomb.io/"
+  },
+  "customer_logos_hint": "https://www.honeycomb.io/",
+  "_mock": true
+}

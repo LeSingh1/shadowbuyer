@@ -1,0 +1,639 @@
+{
+  "negotiation_decision": {
+    "_verify_negotiation_decision": {
+      "id": "615c02ad-c094-462a-aa9f-132f4f89023f",
+      "bucket": "negotiation_decision",
+      "key": "_verify_negotiation_decision",
+      "value": {
+        "action": "counter",
+        "amount": "$1,950/host/year"
+      },
+      "ts": 1778956047,
+      "via": "local"
+    },
+    "datadog": {
+      "id": "eee31af8-320a-463d-b0d9-e9be6168a7b0",
+      "bucket": "negotiation_decision",
+      "key": "datadog",
+      "value": {
+        "action": "counter",
+        "target_price": "$1,950/host/year",
+        "rationale": "New Relic went private — use pricing instability as leverage",
+        "leverage": "Splunk/Cisco acquisition uncertainty cited as eval alternative"
+      },
+      "ts": 1778956835,
+      "via": "local"
+    }
+  },
+  "trash_talk": {
+    "_verify_trash_talk": {
+      "id": "9a8968f2-2912-464b-a22b-22fe36581382",
+      "bucket": "trash_talk",
+      "key": "_verify_trash_talk",
+      "value": {
+        "vendor": "Datadog",
+        "competitor_dig": "We're more reliable than New Relic during incidents."
+      },
+      "ts": 1778956047,
+      "via": "local"
+    },
+    "datadog": {
+      "id": "bf9d6570-e768-48ef-b280-03b3c977d23c",
+      "bucket": "trash_talk",
+      "key": "datadog",
+      "value": {
+        "vendor": "Datadog",
+        "competitor_dig": "We're more reliable than New Relic during incidents."
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "grafana_cloud": {
+      "id": "1910db21-650c-42ea-a926-79248b5a71a7",
+      "bucket": "trash_talk",
+      "key": "grafana_cloud",
+      "value": {
+        "vendor": "Grafana Cloud",
+        "competitor_dig": "You don't get locked in like with Datadog's proprietary agent."
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "honeycomb": {
+      "id": "403a113c-6b90-44f4-8401-fc1d6a4297f1",
+      "bucket": "trash_talk",
+      "key": "honeycomb",
+      "value": {
+        "vendor": "Honeycomb",
+        "competitor_dig": "Splunk costs 10x for half the cardinality."
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "new_relic": {
+      "id": "027f4326-c2cf-4198-8778-04226f48cbe4",
+      "bucket": "trash_talk",
+      "key": "new_relic",
+      "value": {
+        "vendor": "New Relic",
+        "competitor_dig": "Datadog will nickel-and-dime you on every custom metric."
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "splunk": {
+      "id": "f23f6f28-a894-49ce-b2aa-49206cfa9106",
+      "bucket": "trash_talk",
+      "key": "splunk",
+      "value": {
+        "vendor": "Splunk",
+        "competitor_dig": "Grafana is a hobby toy — we power Fortune 50 SOCs."
+      },
+      "ts": 1778956044,
+      "via": "local"
+    }
+  },
+  "vendor_profile": {
+    "_verify_1778955852": {
+      "id": "0bdeb360-b0dc-4123-8514-53c2b13de56c",
+      "bucket": "vendor_profile",
+      "key": "_verify_1778955852",
+      "value": {
+        "hello": "shadowbuyer",
+        "demo": "datadog"
+      },
+      "ts": 1778955852,
+      "via": "local"
+    },
+    "_verify_vendor_profile": {
+      "id": "69c8e05b-055f-4d64-8437-51cde32fefaa",
+      "bucket": "vendor_profile",
+      "key": "_verify_vendor_profile",
+      "value": {
+        "name": "Datadog",
+        "rating": 4.3
+      },
+      "ts": 1778956047,
+      "via": "local"
+    },
+    "datadog": {
+      "id": "a6f22f3e-344f-46d8-afee-b61b4df13fdd",
+      "bucket": "vendor_profile",
+      "key": "datadog",
+      "value": {
+        "slug": "datadog",
+        "name": "Datadog",
+        "g2": {
+          "rating": 4.3,
+          "review_count": 2847,
+          "review_excerpts": [
+            "Datadog has become our go-to observability platform. The APM traces are excellent, dashboards are flexible, and the Kubernetes integration saved us weeks of setup.",
+            "Pricing creep is the main pain. Every feature is a separate SKU. We tripled our bill in 18 months as we added more hosts and custom metrics.",
+            "Incredibly powerful for a team that can invest in setup. The learning curve is steep but worth it for production-grade observability at scale.",
+            "The UI is genuinely best-in-class. Dashboards feel like a product that engineers actually use, not an ops afterthought.",
+            "Support is slow for non-enterprise tiers. Took 4 days to get a response on a billing question. The product itself is solid though."
+          ],
+          "source_url": "https://www.g2.com/products/datadog/reviews",
+          "served_from_cache": true
+        },
+        "pricing": {
+          "prices_seen": [
+            "$0/host",
+            "$15/host/month",
+            "$23/host/month",
+            "$2,300/host/year",
+            "$0.10/million log events"
+          ],
+          "plan_headings": [
+            "Free",
+            "Pro",
+            "Enterprise",
+            "APM",
+            "Log Management",
+            "Infrastructure",
+            "NPM"
+          ],
+          "source_url": "https://www.datadoghq.com/pricing/"
+        },
+        "status": {
+          "indicators_present": [
+            "operational"
+          ],
+          "recent_incidents": [
+            "Resolved - Feb 2024: Elevated error rates on metrics ingestion in us-east-1. Duration: 47 min.",
+            "Resolved - Nov 2023: APM trace search degraded performance. Duration: 2h 13min."
+          ],
+          "source_url": "https://status.datadoghq.com/"
+        },
+        "customer_logos_hint": "https://www.datadoghq.com/",
+        "_mock": true
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "newrelic": {
+      "id": "55090b80-5e14-4123-9b6c-9541f6c34b7b",
+      "bucket": "vendor_profile",
+      "key": "newrelic",
+      "value": {
+        "slug": "newrelic",
+        "name": "New Relic",
+        "g2": {
+          "rating": 4.3,
+          "review_count": 1563,
+          "review_excerpts": [
+            "New Relic's shift to consumption-based pricing was painful for teams with spiky workloads. Predictability went out the window.",
+            "The 100GB free tier is genuinely useful for small teams. Onboarding is fast with the guided install.",
+            "Query language (NRQL) is powerful once you learn it. Comparable to Splunk SPL but less steep.",
+            "Had a major ingestion incident in Q3 2023. Alerts stopped firing for 90 minutes. That shook our confidence.",
+            "Better priced than Datadog for log-heavy workloads. APM traces feel slightly inferior though."
+          ],
+          "source_url": "https://www.g2.com/products/new-relic/reviews",
+          "served_from_cache": true
+        },
+        "pricing": {
+          "prices_seen": [
+            "$0/month",
+            "$0.30/GB",
+            "$99/user/month"
+          ],
+          "plan_headings": [
+            "Free",
+            "Standard",
+            "Pro",
+            "Enterprise"
+          ],
+          "source_url": "https://newrelic.com/pricing"
+        },
+        "status": {
+          "indicators_present": [
+            "operational"
+          ],
+          "recent_incidents": [
+            "Resolved - Sep 2023: Alert notifications delayed for ~90 min in US region.",
+            "Resolved - Jan 2024: Slow log query response times, degraded for 30 min."
+          ],
+          "source_url": "https://status.newrelic.com/"
+        },
+        "customer_logos_hint": "https://newrelic.com/",
+        "_mock": true
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "honeycomb": {
+      "id": "9c0c8c1b-6d07-44de-8e9c-cb53404d570f",
+      "bucket": "vendor_profile",
+      "key": "honeycomb",
+      "value": {
+        "slug": "honeycomb",
+        "name": "Honeycomb",
+        "g2": {
+          "rating": 4.7,
+          "review_count": 318,
+          "review_excerpts": [
+            "Honeycomb is purpose-built for high-cardinality observability. If you're doing distributed tracing at scale, nothing else comes close.",
+            "Smaller vendor with a passionate team. Support response times are excellent — real engineers, not scripts.",
+            "The query interface (BubbleUp) is genuinely innovative. You can find anomalies in minutes that would take hours in Datadog.",
+            "Limited ecosystem compared to Datadog. Some integrations require custom instrumentation. Fine for greenfield, harder for legacy stacks.",
+            "Pricing is predictable — events-based, not host-based. Much easier to budget for serverless and container workloads."
+          ],
+          "source_url": "https://www.g2.com/products/honeycomb-io/reviews",
+          "served_from_cache": true
+        },
+        "pricing": {
+          "prices_seen": [
+            "$0/month",
+            "$130/month",
+            "custom Enterprise"
+          ],
+          "plan_headings": [
+            "Free",
+            "Pro",
+            "Enterprise"
+          ],
+          "source_url": "https://www.honeycomb.io/pricing"
+        },
+        "status": {
+          "indicators_present": [
+            "operational"
+          ],
+          "recent_incidents": [
+            "Resolved - Oct 2023: Elevated query latency for ~20 min."
+          ],
+          "source_url": "https://status.honeycomb.io/"
+        },
+        "customer_logos_hint": "https://www.honeycomb.io/",
+        "_mock": true
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "grafana": {
+      "id": "62fbf198-2407-4031-be8f-dbcaf7158421",
+      "bucket": "vendor_profile",
+      "key": "grafana",
+      "value": {
+        "slug": "grafana",
+        "name": "Grafana Cloud",
+        "g2": {
+          "rating": 4.4,
+          "review_count": 524,
+          "review_excerpts": [
+            "Open-source roots mean deep customization. Dashboards are beautiful and the community plugin library is huge.",
+            "Grafana Cloud is much simpler to run than self-hosted. Managed Loki and Tempo save real ops time.",
+            "No proprietary agent lock-in. We can switch backends without changing instrumentation — huge vendor negotiating leverage.",
+            "Alerting has improved but still feels like an afterthought vs Datadog. Complex routing rules are painful to set up.",
+            "Best price-to-value ratio in the category, especially for metrics. Logs and traces get expensive at scale."
+          ],
+          "source_url": "https://www.g2.com/products/grafana-cloud/reviews",
+          "served_from_cache": true
+        },
+        "pricing": {
+          "prices_seen": [
+            "$0/month free tier",
+            "$8/1000 active series",
+            "$0.50/GB logs"
+          ],
+          "plan_headings": [
+            "Free",
+            "Pro",
+            "Advanced",
+            "Enterprise"
+          ],
+          "source_url": "https://grafana.com/pricing/"
+        },
+        "status": {
+          "indicators_present": [
+            "operational"
+          ],
+          "recent_incidents": [
+            "Resolved - Dec 2023: Loki log ingestion slow in eu-west-1 for ~45 min."
+          ],
+          "source_url": "https://status.grafana.com/"
+        },
+        "customer_logos_hint": "https://grafana.com/products/cloud/",
+        "_mock": true
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "splunk": {
+      "id": "b6519a4f-222f-4c59-8391-6375a30082a1",
+      "bucket": "vendor_profile",
+      "key": "splunk",
+      "value": {
+        "slug": "splunk",
+        "name": "Splunk",
+        "g2": {
+          "rating": 4.2,
+          "review_count": 2104,
+          "review_excerpts": [
+            "Splunk is the gold standard for log analytics and SIEM. If compliance and security are your primary use case, nothing beats it.",
+            "Pricing is opaque and expensive. The per-GB ingestion model punishes verbose applications. Expect sticker shock.",
+            "SPL (Splunk Processing Language) is powerful but has a steep learning curve. Budget for training.",
+            "Cisco acquisition created uncertainty around roadmap. Several customers I know are actively evaluating alternatives.",
+            "Enterprise support is responsive and knowledgeable. Best support SLA of any vendor we've used."
+          ],
+          "source_url": "https://www.g2.com/products/splunk-enterprise/reviews",
+          "served_from_cache": true
+        },
+        "pricing": {
+          "prices_seen": [
+            "$150/GB/day",
+            "$1,800/GB/day enterprise baseline",
+            "workload pricing available"
+          ],
+          "plan_headings": [
+            "Cloud",
+            "Enterprise",
+            "ITSI",
+            "ES Security"
+          ],
+          "source_url": "https://www.splunk.com/en_us/products/pricing.html"
+        },
+        "status": {
+          "indicators_present": [
+            "operational"
+          ],
+          "recent_incidents": [
+            "Resolved - Mar 2024: Search head cluster degraded, impacting saved searches for ~2h.",
+            "Resolved - Jan 2024: Splunk Cloud indexing delays in AWS us-east-1."
+          ],
+          "source_url": "https://status.splunk.com/"
+        },
+        "customer_logos_hint": "https://www.splunk.com/",
+        "_mock": true
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "datadog_funding": {
+      "id": "95bc3618-8f95-495b-b77f-427ab77f2972",
+      "bucket": "vendor_profile",
+      "key": "datadog_funding",
+      "value": {
+        "name": "Datadog",
+        "status": "Public (NASDAQ: DDOG)",
+        "ipo_date": "2019-09-19",
+        "market_cap_approx": "$38B (May 2024)",
+        "last_private_round": {
+          "type": "Series D",
+          "amount": "$94.5M",
+          "date": "2016-01",
+          "lead": "ICONIQ Capital"
+        },
+        "notable": "Revenue $2.1B FY2023, 28% YoY growth. ARR growing but sales efficiency declining post-2022.",
+        "_source": "mock/Crunchbase"
+      },
+      "ts": 1778956759,
+      "via": "local"
+    },
+    "newrelic_funding": {
+      "id": "2afd8b43-8230-4af3-94f7-1487d587a8db",
+      "bucket": "vendor_profile",
+      "key": "newrelic_funding",
+      "value": {
+        "name": "New Relic",
+        "status": "Private (taken private by Francisco Partners + TPG, 2023)",
+        "go_private_date": "2023-11",
+        "go_private_price": "$6.5B",
+        "last_public_market_cap": "$5.8B",
+        "notable": "Went private Nov 2023 after struggling public valuation. New ownership likely to push aggressive discounting to win market share back from Datadog.",
+        "_source": "mock/Crunchbase"
+      },
+      "ts": 1778956759,
+      "via": "local"
+    },
+    "honeycomb_funding": {
+      "id": "d222c267-7b3d-4dff-a046-ed96eabfcdff",
+      "bucket": "vendor_profile",
+      "key": "honeycomb_funding",
+      "value": {
+        "name": "Honeycomb",
+        "status": "Private",
+        "last_round": {
+          "type": "Series D",
+          "amount": "$50M",
+          "date": "2022-08",
+          "lead": "Insight Partners",
+          "total_raised": "$183M"
+        },
+        "notable": "Still burning cash. Under pressure to reach profitability before next raise. May be flexible on pricing for logos.",
+        "_source": "mock/Crunchbase"
+      },
+      "ts": 1778956759,
+      "via": "local"
+    },
+    "grafana_funding": {
+      "id": "be12183e-0f18-4c5a-9930-48e096a0d143",
+      "bucket": "vendor_profile",
+      "key": "grafana_funding",
+      "value": {
+        "name": "Grafana Labs",
+        "status": "Private",
+        "last_round": {
+          "type": "Series D",
+          "amount": "$240M",
+          "date": "2022-04",
+          "lead": "GIC",
+          "valuation": "$6B",
+          "total_raised": "$681M"
+        },
+        "notable": "Well-capitalized. Open-source flywheel drives low CAC. Can afford aggressive Cloud pricing to convert OSS users.",
+        "_source": "mock/Crunchbase"
+      },
+      "ts": 1778956759,
+      "via": "local"
+    },
+    "splunk_funding": {
+      "id": "68aafdb6-2a85-417b-a37e-a222b2170015",
+      "bucket": "vendor_profile",
+      "key": "splunk_funding",
+      "value": {
+        "name": "Splunk",
+        "status": "Acquired by Cisco (closed March 2024)",
+        "acquisition_price": "$28B",
+        "acquirer": "Cisco",
+        "close_date": "2024-03-18",
+        "notable": "Cisco acquisition complete. Roadmap uncertainty is real. Enterprise customers are actively exploring alternatives. Strong negotiating angle for ShadowBuyer.",
+        "_source": "mock/Crunchbase"
+      },
+      "ts": 1778956759,
+      "via": "local"
+    }
+  },
+  "ae_quote": {
+    "_verify_ae_quote": {
+      "id": "6643bcde-d178-4bea-ba5b-7a4a755e3d3c",
+      "bucket": "ae_quote",
+      "key": "_verify_ae_quote",
+      "value": {
+        "vendor": "Datadog",
+        "first_quote": "$2,300/host/year"
+      },
+      "ts": 1778956047,
+      "via": "local"
+    },
+    "datadog": {
+      "id": "f4fa6c32-2f2d-41b7-93c7-4e7250e44e3c",
+      "bucket": "ae_quote",
+      "key": "datadog",
+      "value": {
+        "vendor": "Datadog",
+        "form_url": "https://www.datadoghq.com/contact-sales/",
+        "test_profile": {
+          "first_name": "Alex",
+          "last_name": "Rivers",
+          "email": "alex.rivers+shadowbuyer@example.com",
+          "company": "Shadowbuyer Inc",
+          "job_title": "VP Engineering",
+          "phone": "+1-415-555-0142",
+          "company_size": "201-500",
+          "country": "United States",
+          "use_case": "Evaluating observability tools to replace incumbent."
+        },
+        "actionbook_run": null,
+        "screenshot_path": null,
+        "submitted": false,
+        "ae_response": {
+          "vendor": "Datadog",
+          "ae_email": "ae@datadog.com",
+          "first_quote": "$2,300/host/year",
+          "discount_offered": "10% Annual",
+          "competitor_dig": "We're more reliable than New Relic during incidents."
+        }
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "grafana_cloud": {
+      "id": "e614b823-b6a6-48ef-aeea-d8b837e4311c",
+      "bucket": "ae_quote",
+      "key": "grafana_cloud",
+      "value": {
+        "vendor": "Grafana Cloud",
+        "form_url": "https://grafana.com/contact/",
+        "test_profile": {
+          "first_name": "Alex",
+          "last_name": "Rivers",
+          "email": "alex.rivers+shadowbuyer@example.com",
+          "company": "Shadowbuyer Inc",
+          "job_title": "VP Engineering",
+          "phone": "+1-415-555-0142",
+          "company_size": "201-500",
+          "country": "United States",
+          "use_case": "Evaluating observability tools to replace incumbent."
+        },
+        "actionbook_run": null,
+        "screenshot_path": null,
+        "submitted": false,
+        "ae_response": {
+          "vendor": "Grafana Cloud",
+          "ae_email": "ae@grafana.com",
+          "first_quote": "$8/active series, Pro tier",
+          "discount_offered": "Free tier extension + 12% Annual",
+          "competitor_dig": "You don't get locked in like with Datadog's proprietary agent."
+        }
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "honeycomb": {
+      "id": "f44ec381-e423-45af-86b5-97e1d4265b89",
+      "bucket": "ae_quote",
+      "key": "honeycomb",
+      "value": {
+        "vendor": "Honeycomb",
+        "form_url": "https://www.honeycomb.io/contact-sales",
+        "test_profile": {
+          "first_name": "Alex",
+          "last_name": "Rivers",
+          "email": "alex.rivers+shadowbuyer@example.com",
+          "company": "Shadowbuyer Inc",
+          "job_title": "VP Engineering",
+          "phone": "+1-415-555-0142",
+          "company_size": "201-500",
+          "country": "United States",
+          "use_case": "Evaluating observability tools to replace incumbent."
+        },
+        "actionbook_run": null,
+        "screenshot_path": null,
+        "submitted": false,
+        "ae_response": {
+          "vendor": "Honeycomb",
+          "ae_email": "ae@honeycomb.io",
+          "first_quote": "$130/mo Pro + usage",
+          "discount_offered": "20% startup credit, 6 months",
+          "competitor_dig": "Splunk costs 10x for half the cardinality."
+        }
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "new_relic": {
+      "id": "30ba852e-f25c-4947-b6c2-dc79f698d0fc",
+      "bucket": "ae_quote",
+      "key": "new_relic",
+      "value": {
+        "vendor": "New Relic",
+        "form_url": "https://newrelic.com/contact-sales",
+        "test_profile": {
+          "first_name": "Alex",
+          "last_name": "Rivers",
+          "email": "alex.rivers+shadowbuyer@example.com",
+          "company": "Shadowbuyer Inc",
+          "job_title": "VP Engineering",
+          "phone": "+1-415-555-0142",
+          "company_size": "201-500",
+          "country": "United States",
+          "use_case": "Evaluating observability tools to replace incumbent."
+        },
+        "actionbook_run": null,
+        "screenshot_path": null,
+        "submitted": false,
+        "ae_response": {
+          "vendor": "New Relic",
+          "ae_email": "ae@newrelic.com",
+          "first_quote": "$0.30/GB ingest, $99/user/mo",
+          "discount_offered": "15% if committed by EOQ",
+          "competitor_dig": "Datadog will nickel-and-dime you on every custom metric."
+        }
+      },
+      "ts": 1778956043,
+      "via": "local"
+    },
+    "splunk": {
+      "id": "22898e99-54b6-459a-b0b7-658b3c4f4d82",
+      "bucket": "ae_quote",
+      "key": "splunk",
+      "value": {
+        "vendor": "Splunk",
+        "form_url": "https://www.splunk.com/en_us/form/contact-us.html",
+        "test_profile": {
+          "first_name": "Alex",
+          "last_name": "Rivers",
+          "email": "alex.rivers+shadowbuyer@example.com",
+          "company": "Shadowbuyer Inc",
+          "job_title": "VP Engineering",
+          "phone": "+1-415-555-0142",
+          "company_size": "201-500",
+          "country": "United States",
+          "use_case": "Evaluating observability tools to replace incumbent."
+        },
+        "actionbook_run": null,
+        "screenshot_path": null,
+        "submitted": false,
+        "ae_response": {
+          "vendor": "Splunk",
+          "ae_email": "ae@splunk.com",
+          "first_quote": "$1,800/GB/day ingest baseline",
+          "discount_offered": "Volume tier kicks in at 100GB",
+          "competitor_dig": "Grafana is a hobby toy — we power Fortune 50 SOCs."
+        }
+      },
+      "ts": 1778956044,
+      "via": "local"
+    }
+  }
+}
