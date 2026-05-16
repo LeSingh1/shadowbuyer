@@ -39,7 +39,12 @@ def _refresh_demo_state(category: str = "observability") -> dict[str, Any]:
 
 @app.on_event("startup")
 def _warm_demo_state() -> None:
-    _refresh_demo_state()
+    # Never let warmer failures take down the app — /healthz must always be reachable.
+    # /api/demo-state will lazily retry on first request via the refresh path.
+    try:
+        _refresh_demo_state()
+    except Exception:
+        pass
 
 
 def _service_mode() -> dict[str, bool]:
