@@ -1,14 +1,14 @@
 {
   "negotiation_decision": {
     "_verify_negotiation_decision": {
-      "id": "6b37d318-d0c3-4dcf-8286-627e9a5ba6f4",
+      "id": "058f845e-8bb9-48eb-9f62-f239368289b2",
       "bucket": "negotiation_decision",
       "key": "_verify_negotiation_decision",
       "value": {
         "action": "counter",
         "amount": "$1,950/host/year"
       },
-      "ts": 1778962042,
+      "ts": 1778965518,
       "via": "live"
     },
     "datadog": {
@@ -25,13 +25,13 @@
       "via": "live"
     },
     "brief_datadog": {
-      "id": "07f10053-7627-40f4-99fb-f88224533be9",
+      "id": "b43481d5-e398-4e46-aa90-20eafb0fc63d",
       "bucket": "negotiation_decision",
       "key": "brief_datadog",
       "value": {
         "vendor": "Datadog",
         "slug": "datadog",
-        "generated_at": 1778963854,
+        "generated_at": 1778965555,
         "list_quote": {
           "raw": "$2,300/host/year",
           "parsed_usd": 2300.0,
@@ -56,7 +56,7 @@
         "funding_status": "Public (NASDAQ: DDOG)",
         "trash_talk_intel": "We're more reliable than New Relic during incidents."
       },
-      "ts": 1778963855,
+      "ts": 1778965556,
       "via": "live"
     },
     "brief_newrelic": {
@@ -202,14 +202,14 @@
   },
   "trash_talk": {
     "_verify_trash_talk": {
-      "id": "7e1d5998-f0fc-45b2-b5c2-8e7563fa7a60",
+      "id": "734f0f32-77f4-4305-8095-cb372a598222",
       "bucket": "trash_talk",
       "key": "_verify_trash_talk",
       "value": {
         "vendor": "Datadog",
         "competitor_dig": "We're more reliable than New Relic during incidents."
       },
-      "ts": 1778962043,
+      "ts": 1778965518,
       "via": "live"
     },
     "datadog": {
@@ -278,12 +278,12 @@
       "via": "live"
     },
     "moat_report": {
-      "id": "272e6be7-3ab8-4c9f-96d3-04191ef11014",
+      "id": "dde15e35-cad6-493f-9605-adbd0ae3eb32",
       "bucket": "trash_talk",
       "key": "moat_report",
       "value": {
         "title": "ShadowBuyer Competitive Intel — Trash-Talk Moat",
-        "generated_at": "2026-05-16T20:37:35Z",
+        "generated_at": "2026-05-16T21:05:56Z",
         "summary": "5 vendors volunteered competitive intel during sales calls. ShadowBuyer captures this automatically and uses it in negotiation.",
         "entries": [
           {
@@ -324,7 +324,7 @@
         ],
         "moat_explanation": "Traditional procurement: you hear one AE's pitch and believe it. ShadowBuyer: you hear ALL AEs trash-talk each other, then use each statement as negotiation leverage against the vendor that made it. Datadog says New Relic has incidents? Tell Datadog you're evaluating New Relic anyway and watch the discount grow."
       },
-      "ts": 1778963855,
+      "ts": 1778965556,
       "via": "live"
     }
   },
@@ -341,14 +341,14 @@
       "via": "local"
     },
     "_verify_vendor_profile": {
-      "id": "377141af-dff8-4ebb-9ca7-4680dae33fd7",
+      "id": "f751a54c-480e-4be4-beae-6527261ed8ed",
       "bucket": "vendor_profile",
       "key": "_verify_vendor_profile",
       "value": {
         "name": "Datadog",
         "rating": 4.3
       },
-      "ts": 1778962041,
+      "ts": 1778965517,
       "via": "live"
     },
     "datadog": {
@@ -909,14 +909,14 @@
   },
   "ae_quote": {
     "_verify_ae_quote": {
-      "id": "596538a5-a7ee-4147-8cb9-8c29963e236f",
+      "id": "80b23691-7641-4c79-96ce-329d9c4c2c47",
       "bucket": "ae_quote",
       "key": "_verify_ae_quote",
       "value": {
         "vendor": "Datadog",
         "first_quote": "$2,300/host/year"
       },
-      "ts": 1778962042,
+      "ts": 1778965517,
       "via": "live"
     },
     "datadog": {

@@ -21,21 +21,21 @@
           "clause_b_idx": 1,
           "similarity": -0.1515,
           "divergence_risk": "HIGH",
-          "note": "Renewal terms are materially different — flag for legal review."
+          "note": "Renewal terms are materially different - flag for legal review."
         },
         {
           "clause_a_idx": 0,
           "clause_b_idx": 2,
           "similarity": 0.0801,
           "divergence_risk": "HIGH",
-          "note": "Renewal terms are materially different — flag for legal review."
+          "note": "Renewal terms are materially different - flag for legal review."
         },
         {
           "clause_a_idx": 1,
           "clause_b_idx": 2,
           "similarity": 0.0253,
           "divergence_risk": "HIGH",
-          "note": "Renewal terms are materially different — flag for legal review."
+          "note": "Renewal terms are materially different - flag for legal review."
         }
       ]
     },
@@ -53,21 +53,21 @@
           "clause_b_idx": 1,
           "similarity": -0.1163,
           "divergence_risk": "HIGH",
-          "note": "Price cap differs significantly — negotiate hardcap language."
+          "note": "Price cap differs significantly - negotiate hardcap language."
         },
         {
           "clause_a_idx": 0,
           "clause_b_idx": 2,
           "similarity": 0.2152,
           "divergence_risk": "HIGH",
-          "note": "Price cap differs significantly — negotiate hardcap language."
+          "note": "Price cap differs significantly - negotiate hardcap language."
         },
         {
           "clause_a_idx": 1,
           "clause_b_idx": 2,
           "similarity": -0.2352,
           "divergence_risk": "HIGH",
-          "note": "Price cap differs significantly — negotiate hardcap language."
+          "note": "Price cap differs significantly - negotiate hardcap language."
         }
       ]
     },
@@ -85,21 +85,21 @@
           "clause_b_idx": 1,
           "similarity": 0.0774,
           "divergence_risk": "HIGH",
-          "note": "Data export windows vary widely — ensure 90-day minimum."
+          "note": "Data export windows vary widely - ensure 90-day minimum."
         },
         {
           "clause_a_idx": 0,
           "clause_b_idx": 2,
           "similarity": -0.0404,
           "divergence_risk": "HIGH",
-          "note": "Data export windows vary widely — ensure 90-day minimum."
+          "note": "Data export windows vary widely - ensure 90-day minimum."
         },
         {
           "clause_a_idx": 1,
           "clause_b_idx": 2,
           "similarity": -0.2948,
           "divergence_risk": "HIGH",
-          "note": "Data export windows vary widely — ensure 90-day minimum."
+          "note": "Data export windows vary widely - ensure 90-day minimum."
         }
       ]
     },
@@ -117,21 +117,21 @@
           "clause_b_idx": 1,
           "similarity": -0.2769,
           "divergence_risk": "HIGH",
-          "note": "Liability caps diverge — insist on 12-month fee baseline."
+          "note": "Liability caps diverge - insist on 12-month fee baseline."
         },
         {
           "clause_a_idx": 0,
           "clause_b_idx": 2,
           "similarity": 0.0756,
           "divergence_risk": "HIGH",
-          "note": "Liability caps diverge — insist on 12-month fee baseline."
+          "note": "Liability caps diverge - insist on 12-month fee baseline."
         },
         {
           "clause_a_idx": 1,
           "clause_b_idx": 2,
           "similarity": -0.3299,
           "divergence_risk": "HIGH",
-          "note": "Liability caps diverge — insist on 12-month fee baseline."
+          "note": "Liability caps diverge - insist on 12-month fee baseline."
         }
       ]
     }
@@ -144,7 +144,7 @@
         "clause_b_idx": 1,
         "similarity": -0.1515,
         "divergence_risk": "HIGH",
-        "note": "Renewal terms are materially different — flag for legal review."
+        "note": "Renewal terms are materially different - flag for legal review."
       },
       "clause_a": "This Agreement will automatically renew for successive one-year terms unless either party provides written notice of non",
       "clause_b": "The Subscription Term shall automatically renew for additional one (1) year periods unless Customer provides Datadog wit"
@@ -156,7 +156,7 @@
         "clause_b_idx": 2,
         "similarity": 0.0801,
         "divergence_risk": "HIGH",
-        "note": "Renewal terms are materially different — flag for legal review."
+        "note": "Renewal terms are materially different - flag for legal review."
       },
       "clause_a": "This Agreement will automatically renew for successive one-year terms unless either party provides written notice of non",
       "clause_b": "Customer may terminate this Agreement at any time upon thirty (30) days written notice."
@@ -168,7 +168,7 @@
         "clause_b_idx": 2,
         "similarity": 0.0253,
         "divergence_risk": "HIGH",
-        "note": "Renewal terms are materially different — flag for legal review."
+        "note": "Renewal terms are materially different - flag for legal review."
       },
       "clause_a": "The Subscription Term shall automatically renew for additional one (1) year periods unless Customer provides Datadog wit",
       "clause_b": "Customer may terminate this Agreement at any time upon thirty (30) days written notice."
@@ -180,7 +180,7 @@
         "clause_b_idx": 1,
         "similarity": -0.1163,
         "divergence_risk": "HIGH",
-        "note": "Price cap differs significantly — negotiate hardcap language."
+        "note": "Price cap differs significantly - negotiate hardcap language."
       },
       "clause_a": "Datadog reserves the right to increase fees by up to 7% on each anniversary of the Effective Date.",
       "clause_b": "Pricing for renewal terms shall not increase by more than ten percent (10%) over the previous term's pricing without mut"
@@ -192,7 +192,7 @@
         "clause_b_idx": 2,
         "similarity": 0.2152,
         "divergence_risk": "HIGH",
-        "note": "Price cap differs significantly — negotiate hardcap language."
+        "note": "Price cap differs significantly - negotiate hardcap language."
       },
       "clause_a": "Datadog reserves the right to increase fees by up to 7% on each anniversary of the Effective Date.",
       "clause_b": "Fees are fixed for the duration of the initial Subscription Term. Renewal pricing is subject to Datadog's then-current l"
@@ -204,7 +204,7 @@
         "clause_b_idx": 2,
         "similarity": -0.2352,
         "divergence_risk": "HIGH",
-        "note": "Price cap differs significantly — negotiate hardcap language."
+        "note": "Price cap differs significantly - negotiate hardcap language."
       },
       "clause_a": "Pricing for renewal terms shall not increase by more than ten percent (10%) over the previous term's pricing without mut",
       "clause_b": "Fees are fixed for the duration of the initial Subscription Term. Renewal pricing is subject to Datadog's then-current l"
@@ -216,7 +216,7 @@
         "clause_b_idx": 1,
         "similarity": 0.0774,
         "divergence_risk": "HIGH",
-        "note": "Data export windows vary widely — ensure 90-day minimum."
+        "note": "Data export windows vary widely - ensure 90-day minimum."
       },
       "clause_a": "Upon termination, Customer may export their data for a period of 30 days.",
       "clause_b": "Following termination or expiration, Customer shall have ninety (90) days to retrieve Customer Data before Datadog delet"
@@ -228,7 +228,7 @@
         "clause_b_idx": 2,
         "similarity": -0.0404,
         "divergence_risk": "HIGH",
-        "note": "Data export windows vary widely — ensure 90-day minimum."
+        "note": "Data export windows vary widely - ensure 90-day minimum."
       },
       "clause_a": "Upon termination, Customer may export their data for a period of 30 days.",
       "clause_b": "Customer Data will be purged within 14 days of contract termination with no export option after that date."
@@ -240,7 +240,7 @@
         "clause_b_idx": 2,
         "similarity": -0.2948,
         "divergence_risk": "HIGH",
-        "note": "Data export windows vary widely — ensure 90-day minimum."
+        "note": "Data export windows vary widely - ensure 90-day minimum."
       },
       "clause_a": "Following termination or expiration, Customer shall have ninety (90) days to retrieve Customer Data before Datadog delet",
       "clause_b": "Customer Data will be purged within 14 days of contract termination with no export option after that date."
@@ -252,7 +252,7 @@
         "clause_b_idx": 1,
         "similarity": -0.2769,
         "divergence_risk": "HIGH",
-        "note": "Liability caps diverge — insist on 12-month fee baseline."
+        "note": "Liability caps diverge - insist on 12-month fee baseline."
       },
       "clause_a": "In no event shall Datadog's total aggregate liability exceed the amounts paid by Customer in the twelve (12) months prec",
       "clause_b": "Each party's total cumulative liability arising out of or related to this Agreement is limited to fees paid in the three"
@@ -264,7 +264,7 @@
         "clause_b_idx": 2,
         "similarity": 0.0756,
         "divergence_risk": "HIGH",
-        "note": "Liability caps diverge — insist on 12-month fee baseline."
+        "note": "Liability caps diverge - insist on 12-month fee baseline."
       },
       "clause_a": "In no event shall Datadog's total aggregate liability exceed the amounts paid by Customer in the twelve (12) months prec",
       "clause_b": "Datadog's liability shall not exceed USD $10,000 regardless of the nature of the claim."
@@ -276,7 +276,7 @@
         "clause_b_idx": 2,
         "similarity": -0.3299,
         "divergence_risk": "HIGH",
-        "note": "Liability caps diverge — insist on 12-month fee baseline."
+        "note": "Liability caps diverge - insist on 12-month fee baseline."
       },
       "clause_a": "Each party's total cumulative liability arising out of or related to this Agreement is limited to fees paid in the three",
       "clause_b": "Datadog's liability shall not exceed USD $10,000 regardless of the nature of the claim."

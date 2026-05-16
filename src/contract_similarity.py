@@ -68,16 +68,16 @@ def compare_clauses(label: str, clauses: list[str]) -> dict[str, Any]:
 def _risk_note(risk: str, label: str) -> str:
     notes = {
         "HIGH": {
-            "auto_renewal": "Renewal terms are materially different — flag for legal review.",
-            "price_increase": "Price cap differs significantly — negotiate hardcap language.",
-            "data_portability": "Data export windows vary widely — ensure 90-day minimum.",
-            "liability_cap": "Liability caps diverge — insist on 12-month fee baseline.",
+            "auto_renewal": "Renewal terms are materially different - flag for legal review.",
+            "price_increase": "Price cap differs significantly - negotiate hardcap language.",
+            "data_portability": "Data export windows vary widely - ensure 90-day minimum.",
+            "liability_cap": "Liability caps diverge - insist on 12-month fee baseline.",
         },
         "MEDIUM": {
-            "auto_renewal": "Similar intent, different notice periods — align to 60 days.",
+            "auto_renewal": "Similar intent, different notice periods - align to 60 days.",
             "price_increase": "Price language mostly consistent but check annual cap.",
             "data_portability": "Export rights similar but verify retention period.",
-            "liability_cap": "Liability caps in same ballpark — confirm calculation method.",
+            "liability_cap": "Liability caps in same ballpark - confirm calculation method.",
         },
         "LOW": {
             "auto_renewal": "Renewal clauses are substantially equivalent.",
