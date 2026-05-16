@@ -5,14 +5,16 @@ import Quotes        from './views/Quotes'
 import NegotiationLog from './views/NegotiationLog'
 import Contracts     from './views/Contracts'
 import SponsorHealth from './views/SponsorHealth'
+import Conversations from './views/Conversations'
 import { Btn }       from './components/ui'
 
 const VIEWS = [
-  { id: 'vendors',     label: 'Vendors',         icon: 'ti-briefcase',   addLabel: 'Add vendor'   },
-  { id: 'quotes',      label: 'Quotes',           icon: 'ti-file-invoice',addLabel: 'Add quote'    },
-  { id: 'negotiation', label: 'Negotiation log',  icon: 'ti-messages',    addLabel: 'Add note'     },
-  { id: 'contracts',   label: 'Contracts',        icon: 'ti-file-check',  addLabel: 'Add contract' },
-  { id: 'sponsors',    label: 'Sponsor health',   icon: 'ti-plug',        addLabel: 'Refresh'      },
+  { id: 'vendors',       label: 'Vendors',         icon: 'ti-briefcase',    addLabel: 'Add vendor'   },
+  { id: 'quotes',        label: 'Quotes',           icon: 'ti-file-invoice', addLabel: 'Add quote'    },
+  { id: 'conversations', label: 'Conversations',    icon: 'ti-mail',         addLabel: 'New thread'   },
+  { id: 'negotiation',   label: 'Negotiation log',  icon: 'ti-messages',     addLabel: 'Add note'     },
+  { id: 'contracts',     label: 'Contracts',        icon: 'ti-file-check',   addLabel: 'Add contract' },
+  { id: 'sponsors',      label: 'Sponsor health',   icon: 'ti-plug',         addLabel: 'Refresh'      },
 ]
 
 export default function App() {
@@ -106,6 +108,9 @@ export default function App() {
           )}
           {activeId === 'sponsors' && (
             <SponsorHealth onCountChange={handleCountChange('sponsors')} />
+          )}
+          {activeId === 'conversations' && (
+            <Conversations onCountChange={handleCountChange('conversations')} />
           )}
         </main>
       </div>
