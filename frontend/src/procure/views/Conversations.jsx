@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Badge } from '../components/ui'
 
 const STRATEGY_BADGE = {
@@ -130,7 +130,9 @@ function ThreadCard({ thread, expanded, onToggle }) {
 export default function Conversations({ onCountChange }) {
   const [openId, setOpenId] = useState('Datadog')
 
-  if (onCountChange) onCountChange(THREADS.length)
+  useEffect(() => {
+    onCountChange?.(THREADS.length)
+  }, [onCountChange])
 
   const wonCount = THREADS.filter(t => t.strategy === 'hardball' || (t.outcome.includes('Won'))).length
   const activeCount = THREADS.filter(t => t.strategy !== 'declined').length
