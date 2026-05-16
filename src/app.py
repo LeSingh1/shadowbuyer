@@ -139,22 +139,40 @@ def _probe_sponsors() -> dict[str, dict[str, Any]]:
         except Exception as e:
             results[name] = {"ok": False, "latency_ms": int((_t.time() - t0) * 1000), "error": f"{type(e).__name__}: {e}"}
 
-    # TokenRouter / Qwen / Z.ai — one probe shared (same key).
+    # TokenRouter / Qwen / Z.ai — POST the real /chat/completions path the pipeline
+    # uses. 200 = full success; 400 = key valid but request shape off (still "live"
+    # because auth passed); 401/403 = bad key; 404 = wrong base URL.
     if os.getenv("TOKENROUTER_API_KEY"):
         def _tr():
             base = os.getenv("TOKENROUTER_BASE_URL", "https://api.tokenrouter.io/v1").rstrip("/")
-            r = httpx.get(f"{base}/models", headers={"Authorization": f"Bearer {os.environ['TOKENROUTER_API_KEY']}"}, timeout=3.0)
-            return (200 <= r.status_code < 300, f"HTTP {r.status_code}")
+            r = httpx.post(
+                f"{base}/chat/completions",
+                headers={"Authorization": f"Bearer {os.environ['TOKENROUTER_API_KEY']}", "Content-Type": "application/json"},
+                json={"model": "qwen/qwen3-max", "messages": [{"role": "user", "content": "hi"}], "max_tokens": 1},
+                timeout=4.0,
+            )
+            # Accept 2xx (real response) OR 400 (auth ok, model/payload arg-error).
+            ok = (200 <= r.status_code < 300) or r.status_code == 400
+            return (ok, f"HTTP {r.status_code}" + (f" — {r.text[:120]}" if not ok else ""))
         _probe("TokenRouter", _tr)
         results["Qwen Cloud"] = results["TokenRouter"]
         results["Z.ai"] = results["TokenRouter"]
 
-    # Evermind — try a HEAD on the API root.
+    # Evermind — round-trip a write to a probe key. Tries Bearer then X-API-Key.
     if os.getenv("EVERMIND_API_KEY"):
         def _em():
             base = os.getenv("EVERMIND_BASE_URL", "https://api.evermind.ai").rstrip("/")
-            r = httpx.get(base, headers={"Authorization": f"Bearer {os.environ['EVERMIND_API_KEY']}"}, timeout=3.0)
-            return (200 <= r.status_code < 300, f"HTTP {r.status_code}")  # auth OK if not server-error
+            ns = os.getenv("EVERMIND_NAMESPACE", "probes")
+            key = os.environ["EVERMIND_API_KEY"]
+            url = f"{base}/v1/namespaces/{ns}/keys/__probe__"
+            body = {"value": "probe", "metadata": {}}
+            last_status = None
+            for auth in ({"Authorization": f"Bearer {key}"}, {"X-API-Key": key}, {"x-api-key": key}):
+                r = httpx.put(url, headers={**auth, "Content-Type": "application/json"}, json=body, timeout=3.0)
+                last_status = r.status_code
+                if 200 <= r.status_code < 300:
+                    return (True, f"HTTP {r.status_code} via {list(auth.keys())[0]}")
+            return (False, f"HTTP {last_status} (tried Bearer + X-API-Key)")
         _probe("Evermind", _em)
 
     # Nosana — POST a 1-token embed probe with bearer auth if key is set.
