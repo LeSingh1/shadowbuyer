@@ -10,8 +10,8 @@ WORKDIR /app
 ARG VITE_SHADOWBUYER_URL=https://shadowbuyer.zeabur.app
 ENV VITE_SHADOWBUYER_URL=$VITE_SHADOWBUYER_URL
 
-COPY package.json package-lock.json* ./
-RUN npm ci --no-audit --no-fund
+COPY package.json package-lock.json* bun.lock* ./
+RUN npm install --no-audit --no-fund --legacy-peer-deps
 
 COPY . .
 RUN npm run build:spa
