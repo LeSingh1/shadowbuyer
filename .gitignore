@@ -1,4 +1,4 @@
-# .env is committed intentionally — private repo, hackathon team use only
+.env
 __pycache__/
 *.pyc
 .venv/
