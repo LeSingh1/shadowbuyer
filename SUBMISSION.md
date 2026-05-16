@@ -35,12 +35,14 @@ Try it:
 - https://shadowbuyer.zeabur.app/run/stream?category=observability — full 34-event SSE pipeline
 
 **Frontend (Procure workspace with Vendors / Quotes / Negotiation log / Contracts / Sponsor health):**
-Run locally — `bun install && bun run dev` from `rhthbandaru-star/visual-procurement-studio`. Production env reads `VITE_SHADOWBUYER_URL=https://shadowbuyer.zeabur.app` by default.
+Lives at `frontend/` in the same repo. Run locally — `cd frontend && npm install && npm run build:spa && npm run preview:spa`. Deploys to Zeabur as a second service via `frontend/Dockerfile` + `frontend/zeabur.toml`. Production env: `VITE_SHADOWBUYER_URL=https://shadowbuyer.zeabur.app`.
 
 ## GitHub
 
-- Backend (FastAPI, agents, pipeline): https://github.com/LeSingh1/shadowbuyer
-- Frontend (TanStack + framer-motion): https://github.com/rhthbandaru-star/visual-procurement-studio
+Single repo: https://github.com/LeSingh1/shadowbuyer
+
+- `src/` — FastAPI backend, 6 agents, pipeline
+- `frontend/` — React 19 + Vite SPA, Procure CRM with 5 views
 
 ## Sponsors used (all 11)
 

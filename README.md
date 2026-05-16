@@ -17,13 +17,36 @@ Demo category: observability tools. Live vendor: Datadog. Demo arc: 6 agents →
 - ✅ Deployed live on Zeabur at https://shadowbuyer.zeabur.app
 - ✅ All 11 sponsors wired with real code references; audit at `/api/sponsor-health`
 
+## Repo layout
+
+```
+shadowbuyer/
+├── src/                  ← FastAPI backend + 6 agents (Python 3.12)
+├── fixtures/             ← deterministic mock data
+├── tests/                ← 6 pytest smoke tests (sub-second)
+├── Dockerfile            ← backend image, deploys as `shadowbuyer` on Zeabur
+├── zeabur.toml           ← backend service config
+└── frontend/             ← Procure CRM (React 19 + Vite SPA)
+    ├── src/procure/      ← Vendors / Quotes / NegotiationLog / Contracts / SponsorHealth views
+    ├── src/spa-main.tsx  ← React mount point
+    ├── Dockerfile        ← multi-stage build → nginx serve
+    └── zeabur.toml       ← frontend service config (deploy as 2nd Zeabur service)
+```
+
 ## Run locally
 
 ```bash
+# Backend
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn src.app:app --reload --port 8000
-open http://localhost:8000   # click "Run negotiation →"
+open http://localhost:8000   # embedded HTML dashboard
+
+# Frontend (in a second terminal)
+cd frontend
+npm install
+npm run build:spa && npm run preview:spa
+open http://localhost:4173   # full Procure CRM with sidebar + 5 views
 ```
 
 ## Endpoints
