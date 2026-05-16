@@ -1,18 +1,21 @@
 # ShadowBuyer
 
-Autonomous B2B procurement agent swarm. Demo category: observability tools. Live vendor: Datadog.
+ShadowBuyer is an autonomous B2B procurement swarm that compresses six weeks of SaaS buying into a six-hour agent workflow.
 
-Demo arc: 6 agents collapse 6 weeks of SaaS procurement into 6 hours.
+**Live demo:** https://shadowbuyer.zeabur.app
+**Frontend repo:** https://github.com/rhthbandaru-star/visual-procurement-studio
 
-## Status (Hours 0–4 done)
+Demo category: observability tools. Live vendor: Datadog. Demo arc: 6 agents → $195/host list → $157.50/host negotiated → $225K/yr savings at 500 hosts → 15 contract redlines flagged.
 
-Backend (Person A):
-- ✅ 4 agents wired: Scout, Quote Hunter (consumer), Adversarial Negotiator (Hardball + Diplomat + Referee), Contract Diff
-- ✅ Sequential pipeline; live SSE stream
-- ✅ Two-column live dashboard with verdict, drafted email to AE, and 15-redline MSA review
-- ✅ Mock-fallback contract: every external client returns deterministic stub data when keys are missing
-- ✅ GitHub repo public at [LeSingh1/shadowbuyer](https://github.com/LeSingh1/shadowbuyer)
-- ⏳ Zeabur deploy pending (needs `zeabur auth login` from Person A's terminal)
+## Status
+
+- ✅ 6 agents wired: Scout, Quote Hunter, Hardball + Diplomat + Referee (adversarial negotiation), Contract Diff, Email Drafter
+- ✅ Sequential pipeline with paced SSE stream (34 events end-to-end)
+- ✅ Integrated dashboard: vendor comparison, live swarm, verdict, drafted AE email, 15-redline MSA review, sponsor health
+- ✅ Mock-fallback contract: every external client returns deterministic stub data when keys are missing — demo cannot crash
+- ✅ CORS open so the frontend (Cloudflare Workers / Vite) can hit the SSE stream cross-origin
+- ✅ Deployed live on Zeabur at https://shadowbuyer.zeabur.app
+- ✅ All 11 sponsors wired with real code references; audit at `/api/sponsor-health`
 
 ## Run locally
 

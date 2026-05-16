@@ -2,7 +2,7 @@
 
 Paste-ready copy for `tinyurl.com/agentforgesubmit`. **Deadline: 4:25 PM. Submit by 4:25 PM.**
 
-Replace `<LIVE_URL>` with the Zeabur URL the moment it's confirmed.
+Live URL is confirmed: https://shadowbuyer.zeabur.app
 
 ---
 
@@ -26,11 +26,16 @@ The demo runs the full pipeline live on stage, end-to-end, on Datadog with a com
 
 ## Live URL
 
-https://`<LIVE_URL>`/
+**Backend (live demo, SSE stream, sponsor health):** https://shadowbuyer.zeabur.app
 
-Or — for the integrated workspace + live swarm:
-- Workspace (Procure CRM with Vendors/Quotes/Contracts views): https://`<FRONTEND_URL>`/
-- Live swarm demo: https://`<FRONTEND_URL>`/swarm
+Try it:
+- https://shadowbuyer.zeabur.app/ — embedded dashboard
+- https://shadowbuyer.zeabur.app/healthz — service health
+- https://shadowbuyer.zeabur.app/api/sponsor-health — all 11 sponsors with live/fallback status
+- https://shadowbuyer.zeabur.app/run/stream?category=observability — full 34-event SSE pipeline
+
+**Frontend (Procure workspace with Vendors / Quotes / Negotiation log / Contracts / Sponsor health):**
+Run locally — `bun install && bun run dev` from `rhthbandaru-star/visual-procurement-studio`. Production env reads `VITE_SHADOWBUYER_URL=https://shadowbuyer.zeabur.app` by default.
 
 ## GitHub
 
@@ -41,7 +46,7 @@ Or — for the integrated workspace + live swarm:
 
 AgentField, Bright Data, Actionbook, Evermind, Qwen Cloud, Z.ai, TokenRouter, Nosana, Qoder, Zeabur, Butterbase.
 
-Audit endpoint live at: `https://<LIVE_URL>/api/sponsor-health`
+Audit endpoint live at: https://shadowbuyer.zeabur.app/api/sponsor-health
 
 ## Key demo stats
 
