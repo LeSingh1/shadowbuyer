@@ -18,7 +18,7 @@ PACE_TURN_S = 0.55
 def run(
     category: str = "observability",
     bright_data_input: dict | None = None,
-    include_contract_diff: bool = False,
+    include_contract_diff: bool = True,
 ) -> dict[str, Any]:
     s = scout.run(category, bright_data_input)
     q = quote_hunter.run(s["vendors"])
@@ -26,7 +26,7 @@ def run(
     out: dict[str, Any] = {"scout": s, "quote_hunter": q, "negotiator": n}
     if include_contract_diff:
         out["contract_diff"] = contract_diff.run()
-    out["summary"] = _summary(s, q, n)
+    out["summary"] = _summary(s, q, n, out.get("contract_diff"))
     return out
 
 
@@ -68,11 +68,28 @@ def stream(
     yield {"event": "stage_done", "stage": "negotiator"}
 
     n = negotiator.run(q["quotes"])
-    yield {"event": "summary", "payload": _summary(s, q, n)}
+
+    yield {"event": "stage_start", "stage": "contract_diff", "label": "Comparing vendor MSA to standard template"}
+    _sleep(PACE_STAGE_S)
+    cd = contract_diff.run()
+    yield {
+        "event": "contract_diff_summary",
+        "vendor": cd["vendor"],
+        "redline_count": cd["redline_count"],
+        "severity_counts": cd["severity_counts"],
+        "embedding_backend": cd["embedding_backend"],
+    }
+    _sleep(PACE_STAGE_S)
+    for r in cd["redlines"]:
+        yield {"event": "redline", "redline": r}
+        _sleep(0.18)
+    yield {"event": "stage_done", "stage": "contract_diff", "payload": cd}
+
+    yield {"event": "summary", "payload": _summary(s, q, n, cd)}
     yield {"event": "done"}
 
 
-def _summary(s: dict, q: dict, n: dict) -> dict[str, Any]:
+def _summary(s: dict, q: dict, n: dict, cd: dict | None = None) -> dict[str, Any]:
     if "error" in n:
         return {"ok": False, "reason": n["error"]}
     target = q["quotes"][0]
@@ -93,6 +110,9 @@ def _summary(s: dict, q: dict, n: dict) -> dict[str, Any]:
         "discount_vs_list_pct": round((list_price - final_price) / list_price * 100, 1),
         "winning_strategy": n.get("winner"),
         "round_count": sum(1 for t in n["turns"] if t["role"] in ("hardball", "diplomat")),
+        "contract_redline_count": cd["redline_count"] if cd else None,
+        "contract_high_severity": cd["severity_counts"].get("high") if cd else None,
+        "contract_backend": cd["embedding_backend"] if cd else None,
     }
 
 

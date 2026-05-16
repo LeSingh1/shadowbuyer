@@ -137,6 +137,27 @@ _DASHBOARD_HTML = r"""<!doctype html>
   .pipeline .step.done{color:var(--dp);border-color:var(--dp)}
   .pipeline .arrow{color:var(--line)}
 
+  .redlines{margin:0 28px 28px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:18px 22px;display:none}
+  .redlines.on{display:block}
+  .redlines h2{margin:0 0 4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+  .redlines .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .redlines .count{font-size:18px}
+  .redlines .count strong{color:var(--rf);font-size:24px}
+  .redlines .sev{display:inline-flex;gap:8px;font-size:11px;color:var(--muted)}
+  .redlines .sev .pill{padding:2px 8px;border-radius:99px;border:1px solid var(--line)}
+  .redlines .sev .pill.high{color:var(--hb);border-color:var(--hb)}
+  .redlines .sev .pill.med{color:var(--rf);border-color:var(--rf)}
+  .redlines .sev .pill.low{color:var(--muted)}
+  .redlines .row{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:90px 1fr 60px;gap:14px;align-items:start;opacity:0;animation:in .25s ease-out forwards}
+  .redlines .row .badge{font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:3px 8px;border-radius:2px;justify-self:start}
+  .redlines .row .badge.high{background:rgba(255,93,108,.15);color:var(--hb)}
+  .redlines .row .badge.med{background:rgba(255,200,61,.13);color:var(--rf)}
+  .redlines .row .badge.low{background:rgba(255,255,255,.04);color:var(--muted)}
+  .redlines .row .title{font-weight:600;font-size:13px;margin-bottom:4px}
+  .redlines .row .summary{color:var(--ink);font-size:12px;line-height:1.5}
+  .redlines .row .fix{margin-top:6px;font-size:11px;color:var(--dp)}
+  .redlines .row .sim{text-align:right;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+
   main{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:24px 28px}
   .col{display:flex;flex-direction:column;gap:14px;min-height:200px}
   .col h2{margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px dashed var(--line)}
@@ -195,6 +216,8 @@ _DASHBOARD_HTML = r"""<!doctype html>
   <span class="step" data-stage="negotiator">negotiator</span>
   <span class="arrow">→</span>
   <span class="step" data-stage="referee">referee</span>
+  <span class="arrow">→</span>
+  <span class="step" data-stage="contract_diff">contract diff</span>
 </section>
 
 <main>
@@ -212,6 +235,20 @@ _DASHBOARD_HTML = r"""<!doctype html>
     <div><div class="k">Annual savings</div><div class="v" id="v-save">—</div></div>
     <div><div class="k">Strategy</div><div class="v" id="v-strat">—</div></div>
   </div>
+</section>
+
+<section class="redlines" id="redlines">
+  <h2>Contract Diff · MSA redlines</h2>
+  <div class="top">
+    <div class="count"><strong id="rd-count">0</strong> deviations flagged in <span id="rd-vendor">vendor</span> MSA</div>
+    <div class="sev">
+      <span class="pill high" id="rd-high">high 0</span>
+      <span class="pill med"  id="rd-med">med 0</span>
+      <span class="pill low"  id="rd-low">low 0</span>
+      <span class="pill" id="rd-backend">backend: heuristic</span>
+    </div>
+  </div>
+  <div id="rd-rows"></div>
 </section>
 
 <footer>
@@ -233,6 +270,23 @@ function resetUI(){
   hbCol.innerHTML=''; dpCol.innerHTML=''; verdict.style.display='none';
   ['m-vendor','m-comp','m-hosts','m-list','m-price'].forEach(i=>$(i).textContent='—');
   document.querySelectorAll('.pipeline .step').forEach(s=>{s.classList.remove('active','done')});
+  const redlines = $('redlines'); redlines.classList.remove('on');
+  $('rd-rows').innerHTML=''; $('rd-count').textContent='0';
+  $('rd-high').textContent='high 0'; $('rd-med').textContent='med 0'; $('rd-low').textContent='low 0';
+}
+function renderRedline(r){
+  $('redlines').classList.add('on');
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div><span class="badge ${r.severity}">${r.severity}</span></div>
+    <div>
+      <div class="title">${r.clause_title}</div>
+      <div class="summary">${r.deviation_summary}</div>
+      <div class="fix">↳ ${r.recommended_redline}</div>
+    </div>
+    <div class="sim">sim ${Number(r.similarity).toFixed(2)}</div>`;
+  $('rd-rows').appendChild(row);
 }
 function renderTurn(t){
   const col = t.role === 'hardball' ? hbCol : dpCol;
@@ -282,6 +336,15 @@ go.onclick = () => {
       const t = ev.turn;
       if(t.role === 'referee'){ setStep('referee','active'); renderVerdict(t, lastSummary); setStep('referee','done'); }
       else { renderTurn(t); }
+    } else if(ev.event === 'contract_diff_summary'){
+      $('redlines').classList.add('on');
+      $('rd-count').textContent = ev.redline_count;
+      $('rd-vendor').textContent = ev.vendor;
+      $('rd-high').textContent = `high ${ev.severity_counts.high||0}`;
+      $('rd-med').textContent  = `med ${ev.severity_counts.med||0}`;
+      $('rd-low').textContent  = `low ${ev.severity_counts.low||0}`;
+      $('rd-backend').textContent = `backend: ${ev.embedding_backend}`;
+    } else if(ev.event === 'redline'){ renderRedline(ev.redline);
     } else if(ev.event === 'summary'){
       lastSummary = ev.payload;
       // verdict may have rendered before summary arrived; patch numbers in.
