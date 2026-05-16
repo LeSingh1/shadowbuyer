@@ -244,7 +244,16 @@ _DASHBOARD_HTML = r"""<!doctype html>
   .email .cites{padding:10px 20px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--line)}
   .email .cite{font-size:10px;padding:2px 8px;background:rgba(122,162,255,.08);color:var(--acc);border-radius:99px;letter-spacing:.04em}
 
-  footer{padding:18px 28px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .tagline{padding:10px 28px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.04em}
+  .tagline strong{color:var(--ink);font-weight:600}
+
+  .sponsors{padding:10px 28px;border-top:1px solid var(--line);background:#080a0e;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .sponsors .label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .sponsors .chip{font-size:11px;padding:3px 9px;border:1px solid var(--line);border-radius:99px;color:var(--ink);letter-spacing:.02em}
+  .sponsors .chip.live{border-color:var(--dp);color:var(--dp)}
+  .sponsors .chip.mock{color:var(--muted)}
+
+  footer{padding:14px 28px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   footer a{color:var(--acc);text-decoration:none}
   .mock-flag{color:var(--muted);font-size:10px;margin-left:6px}
   @media (max-width:820px){main{grid-template-columns:1fr}.meta{grid-template-columns:repeat(2,1fr)}.verdict .savings{grid-template-columns:repeat(2,1fr)}}
@@ -254,11 +263,17 @@ _DASHBOARD_HTML = r"""<!doctype html>
 <header>
   <div class="brand">
     <span class="dot" id="dot"></span>
-    <h1>ShadowBuyer · live negotiation</h1>
+    <h1>ShadowBuyer · autonomous B2B procurement</h1>
     <span class="tag" id="modetag">mock fallback</span>
   </div>
-  <button id="go">Run negotiation →</button>
+  <button id="go">Run the swarm →</button>
 </header>
+
+<section class="tagline">
+  Six weeks of demos, RFPs, and pricing games — collapsed to six hours.
+  Watch a <strong>6-agent swarm</strong> research, negotiate, and redline a Datadog deal live.
+  $5T procurement market. Every CFO has lost a quarter to this.
+</section>
 
 <section class="meta">
   <div class="cell"><span class="k">Vendor</span><span class="v" id="m-vendor">—</span></div>
@@ -326,8 +341,23 @@ _DASHBOARD_HTML = r"""<!doctype html>
   <div id="rd-rows"></div>
 </section>
 
+<section class="sponsors" id="sponsors">
+  <span class="label">Built on</span>
+  <span class="chip" data-name="AgentField">AgentField</span>
+  <span class="chip" data-name="TokenRouter">TokenRouter</span>
+  <span class="chip" data-name="Qwen Cloud">Qwen Cloud</span>
+  <span class="chip" data-name="Z.ai">Z.ai · GLM-5.1</span>
+  <span class="chip" data-name="Evermind">Evermind</span>
+  <span class="chip" data-name="Nosana">Nosana</span>
+  <span class="chip" data-name="Bright Data">Bright Data</span>
+  <span class="chip" data-name="Actionbook">Actionbook</span>
+  <span class="chip" data-name="Zeabur">Zeabur</span>
+  <span class="chip" data-name="Qoder">Qoder</span>
+  <span class="chip" data-name="Butterbase">Butterbase</span>
+</section>
+
 <footer>
-  <div>shadowbuyer · adversarial procurement · <a href="/api/demo-state" target="_blank">/api/demo-state</a> · <a href="/healthz" target="_blank">/healthz</a></div>
+  <div>shadowbuyer · adversarial procurement · <a href="/api/demo-state" target="_blank">/api/demo-state</a> · <a href="/api/sponsor-health" target="_blank">/api/sponsor-health</a> · <a href="/healthz" target="_blank">/healthz</a></div>
   <div><a href="https://github.com/LeSingh1/shadowbuyer" target="_blank">source</a></div>
 </footer>
 
@@ -451,9 +481,17 @@ go.onclick = () => {
   es.onerror = () => { es.close(); go.disabled=false; dot.classList.remove('live'); };
 };
 
-fetch('/healthz').then(r=>r.json()).then(h=>{
-  const anyLive = Object.values(h.services||{}).some(Boolean);
-  modetag.textContent = anyLive ? 'mixed: some sponsors live' : 'mock fallback';
+fetch('/api/sponsor-health').then(r=>r.json()).then(h=>{
+  const liveCount = (h.counts||{}).live || 0;
+  modetag.textContent = liveCount > 0 ? `${liveCount} sponsor${liveCount===1?'':'s'} live · ${h.counts.mock||0} mock` : 'mock fallback · all 11 sponsors wired';
+  // Color each sponsor chip by env_status.
+  const byName = {};
+  (h.sponsors||[]).forEach(s => byName[s.name] = s);
+  document.querySelectorAll('.sponsors .chip').forEach(chip => {
+    const s = byName[chip.dataset.name];
+    if (s && s.env_status === 'live') chip.classList.add('live');
+    else if (s && s.env_status === 'mock') chip.classList.add('mock');
+  });
 }).catch(()=>{});
 </script>
 </body></html>"""
