@@ -19,6 +19,7 @@ from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 
 from . import pipeline
+from .agents import email_drafter, negotiator as negotiator_mod, quote_hunter as quote_hunter_mod, scout as scout_mod
 
 app = FastAPI(title="ShadowBuyer", version="0.2.0")
 
@@ -87,6 +88,17 @@ def run_stream(
                 # cheap refresh — full pipeline is already replayed via state warmer if needed
                 _demo_state["snapshot"] = {"summary": last_summary} | (_demo_state.get("snapshot") or {})
     return StreamingResponse(gen(), media_type="text/event-stream")
+
+
+@app.get("/api/email-draft")
+def email_draft(category: str = "observability") -> dict[str, Any]:
+    s = scout_mod.run(category)
+    q = quote_hunter_mod.run(s["vendors"])
+    n = negotiator_mod.run(q["quotes"])
+    if "error" in n:
+        return {"ok": False, "reason": n["error"]}
+    draft = email_drafter.draft(n, q["quotes"][0], q["quotes"][1])
+    return {"ok": True, "email": email_drafter.to_dict(draft)}
 
 
 @app.get("/api/demo-state")
@@ -184,6 +196,19 @@ _DASHBOARD_HTML = r"""<!doctype html>
   .verdict .savings .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
   .verdict .savings .v{font-size:18px;color:var(--rf)}
 
+  .email{margin:0 28px 22px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:0;display:none;overflow:hidden}
+  .email.on{display:block;animation:in .35s ease-out}
+  .email .head{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .email .head h2{margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dp)}
+  .email .head .stamp{font-size:11px;color:var(--muted);letter-spacing:.06em}
+  .email .meta{padding:12px 20px;display:grid;grid-template-columns:80px 1fr;gap:6px 14px;border-bottom:1px solid var(--line);font-size:12px}
+  .email .meta .k{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-size:10px;padding-top:2px}
+  .email .meta .v{color:var(--ink)}
+  .email .subject{padding:12px 20px;font-weight:600;font-size:14px;border-bottom:1px solid var(--line)}
+  .email pre.body{margin:0;padding:18px 20px;color:var(--ink);font-size:13px;line-height:1.6;white-space:pre-wrap;word-wrap:break-word;background:#0e1218}
+  .email .cites{padding:10px 20px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--line)}
+  .email .cite{font-size:10px;padding:2px 8px;background:rgba(122,162,255,.08);color:var(--acc);border-radius:99px;letter-spacing:.04em}
+
   footer{padding:18px 28px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   footer a{color:var(--acc);text-decoration:none}
   .mock-flag{color:var(--muted);font-size:10px;margin-left:6px}
@@ -237,6 +262,21 @@ _DASHBOARD_HTML = r"""<!doctype html>
   </div>
 </section>
 
+<section class="email" id="email">
+  <div class="head">
+    <h2>Outbound email to AE · drafted, not sent</h2>
+    <span class="stamp" id="em-stamp">—</span>
+  </div>
+  <div class="meta">
+    <div class="k">From</div><div class="v" id="em-from">—</div>
+    <div class="k">To</div><div class="v" id="em-to">—</div>
+    <div class="k">Strategy</div><div class="v" id="em-strat">—</div>
+  </div>
+  <div class="subject" id="em-subject">—</div>
+  <pre class="body" id="em-body">—</pre>
+  <div class="cites" id="em-cites"></div>
+</section>
+
 <section class="redlines" id="redlines">
   <h2>Contract Diff · MSA redlines</h2>
   <div class="top">
@@ -273,6 +313,19 @@ function resetUI(){
   const redlines = $('redlines'); redlines.classList.remove('on');
   $('rd-rows').innerHTML=''; $('rd-count').textContent='0';
   $('rd-high').textContent='high 0'; $('rd-med').textContent='med 0'; $('rd-low').textContent='low 0';
+  $('email').classList.remove('on');
+}
+function renderEmail(em){
+  if(!em) return;
+  $('email').classList.add('on');
+  $('em-from').textContent = em.from;
+  $('em-to').textContent = em.to;
+  $('em-strat').textContent = em.strategy;
+  $('em-subject').textContent = em.subject;
+  $('em-body').textContent = em.body;
+  $('em-stamp').textContent = em.dry_run ? 'dry-run · not delivered' : 'sent';
+  const c = $('em-cites'); c.innerHTML = '';
+  (em.cites||[]).forEach(x=>{const s=document.createElement('span');s.className='cite';s.textContent=x;c.appendChild(s);});
 }
 function renderRedline(r){
   $('redlines').classList.add('on');
@@ -354,7 +407,11 @@ go.onclick = () => {
         $('v-save').textContent  = `$${Number(lastSummary.annual_savings_vs_list_usd).toLocaleString()}`;
         $('v-strat').textContent = lastSummary.winning_strategy || '—';
       }
-    } else if(ev.event === 'done'){ es.close(); go.disabled=false; dot.classList.remove('live'); }
+    } else if(ev.event === 'done'){
+      // After the stream finishes, fetch the email draft and render it.
+      fetch('/api/email-draft').then(r=>r.json()).then(j=>{ if(j.ok) renderEmail(j.email); }).catch(()=>{});
+      es.close(); go.disabled=false; dot.classList.remove('live');
+    }
   };
   es.onerror = () => { es.close(); go.disabled=false; dot.classList.remove('live'); };
 };
