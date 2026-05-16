@@ -16,12 +16,23 @@ import time
 from typing import Any
 
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 
 from . import pipeline
 from .agents import email_drafter, negotiator as negotiator_mod, quote_hunter as quote_hunter_mod, scout as scout_mod
 
 app = FastAPI(title="ShadowBuyer", version="0.2.0")
+
+# Frontend (Cloudflare Workers / Vite dev / Lovable preview) lives on a different
+# origin. Open CORS — there's nothing here worth gating.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 _state_lock = threading.Lock()
 _demo_state: dict[str, Any] = {"ok": False, "generated_at": None, "snapshot": None}
