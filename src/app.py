@@ -85,14 +85,28 @@ _SPONSOR_MAP = [
 
 
 @app.get("/api/sponsor-health")
-def sponsor_health() -> dict[str, Any]:
+def sponsor_health(deep: bool = False) -> dict[str, Any]:
+    """Env-var check by default. `?deep=true` adds a real network probe per
+    sponsor (live key required, sub-3s timeout each) so you can confirm the
+    key actually authenticates against the provider.
+    """
+    probes = _probe_sponsors() if deep else {}
     rows = []
     for s in _SPONSOR_MAP:
-        env_status = "n/a" if not s["env"] else ("live" if all(os.getenv(k) for k in s["env"]) else "mock")
-        rows.append({
-            **s,
-            "env_status": env_status,
-        })
+        env_present = bool(s["env"]) and all(os.getenv(k) for k in s["env"])
+        if not s["env"]:
+            env_status = "n/a"
+        elif not env_present:
+            env_status = "mock"
+        elif deep:
+            probe = probes.get(s["name"], {})
+            env_status = "live" if probe.get("ok") else "mock"
+        else:
+            env_status = "live"
+        row = {**s, "env_status": env_status}
+        if deep and s["name"] in probes:
+            row["probe"] = probes[s["name"]]
+        rows.append(row)
     counts = {"live": 0, "mock": 0, "n/a": 0}
     for r in rows:
         counts[r["env_status"]] = counts.get(r["env_status"], 0) + 1
@@ -101,7 +115,64 @@ def sponsor_health() -> dict[str, Any]:
         "counts": counts,
         "sponsors": rows,
         "all_eleven_wired": len(rows) == 11,
+        "deep": deep,
     }
+
+
+def _probe_sponsors() -> dict[str, dict[str, Any]]:
+    """Make one tiny network call per sponsor with credentials present.
+    Returns {name: {ok: bool, latency_ms: int, error: str | None}}.
+    """
+    import time as _t
+    try:
+        import httpx  # type: ignore
+    except ImportError:
+        return {}
+
+    results: dict[str, dict[str, Any]] = {}
+
+    def _probe(name: str, fn):
+        t0 = _t.time()
+        try:
+            ok, detail = fn()
+            results[name] = {"ok": ok, "latency_ms": int((_t.time() - t0) * 1000), "detail": detail}
+        except Exception as e:
+            results[name] = {"ok": False, "latency_ms": int((_t.time() - t0) * 1000), "error": f"{type(e).__name__}: {e}"}
+
+    # TokenRouter / Qwen / Z.ai — one probe shared (same key).
+    if os.getenv("TOKENROUTER_API_KEY"):
+        def _tr():
+            base = os.getenv("TOKENROUTER_BASE_URL", "https://api.tokenrouter.io/v1").rstrip("/")
+            r = httpx.get(f"{base}/models", headers={"Authorization": f"Bearer {os.environ['TOKENROUTER_API_KEY']}"}, timeout=3.0)
+            return (200 <= r.status_code < 300, f"HTTP {r.status_code}")
+        _probe("TokenRouter", _tr)
+        results["Qwen Cloud"] = results["TokenRouter"]
+        results["Z.ai"] = results["TokenRouter"]
+
+    # Evermind — try a HEAD on the API root.
+    if os.getenv("EVERMIND_API_KEY"):
+        def _em():
+            base = os.getenv("EVERMIND_BASE_URL", "https://api.evermind.ai").rstrip("/")
+            r = httpx.get(base, headers={"Authorization": f"Bearer {os.environ['EVERMIND_API_KEY']}"}, timeout=3.0)
+            return (200 <= r.status_code < 300, f"HTTP {r.status_code}")  # auth OK if not server-error
+        _probe("Evermind", _em)
+
+    # Nosana — POST a 1-token embed probe.
+    if os.getenv("NOSANA_ENDPOINT"):
+        def _ns():
+            endpoint = os.getenv("NOSANA_ENDPOINT", "").rstrip("/")
+            r = httpx.post(f"{endpoint}/embed", json={"texts": ["probe"]}, timeout=3.0)
+            return (200 <= r.status_code < 300, f"HTTP {r.status_code}")
+        _probe("Nosana", _ns)
+
+    # Bright Data — no canonical probe URL without scrape spend; check auth header acceptance.
+    if os.getenv("BRIGHTDATA_API_KEY"):
+        def _bd():
+            r = httpx.get("https://api.brightdata.com/status", headers={"Authorization": f"Bearer {os.environ['BRIGHTDATA_API_KEY']}"}, timeout=3.0)
+            return (200 <= r.status_code < 300, f"HTTP {r.status_code}")
+        _probe("Bright Data", _bd)
+
+    return results
 
 
 @app.get("/healthz")
