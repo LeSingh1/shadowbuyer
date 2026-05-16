@@ -27,12 +27,13 @@ open http://localhost:8000   # click "Run negotiation →"
 
 | Method | Path | Returns |
 |---|---|---|
-| `GET`  | `/`                 | live dashboard (HTML) |
-| `GET`  | `/healthz`          | `{ok, version, services: {tokenrouter_live, qwen_live, zai_live, evermind_live, nosana_live, brightdata_live}}` |
-| `POST` | `/run`              | full pipeline snapshot (sync) — `{scout, quote_hunter, negotiator, contract_diff, summary}` |
-| `GET`  | `/run/stream`       | SSE stream of stage + turn events (see contract below) |
-| `GET`  | `/api/demo-state`   | cached snapshot, warmed on startup; pass `?refresh=true` to regenerate |
-| `GET`  | `/api/email-draft`  | drafted AE email derived from the winning negotiation strategy |
+| `GET`  | `/`                  | live dashboard (HTML) |
+| `GET`  | `/healthz`           | `{ok, version, services: {tokenrouter_live, ...}}` |
+| `POST` | `/run`               | full pipeline snapshot (sync) — `{scout, quote_hunter, negotiator, contract_diff, evermind_writes, summary}` |
+| `GET`  | `/run/stream`        | SSE stream of stage + turn + redline + evermind_writes events |
+| `GET`  | `/api/demo-state`    | cached snapshot, warmed on startup; pass `?refresh=true` to regenerate |
+| `GET`  | `/api/email-draft`   | drafted AE email derived from the winning negotiation strategy |
+| `GET`  | `/api/sponsor-health`| all 11 sponsors with env_status (live / mock / n/a) and code_ref |
 
 ## SSE stream contract (`/run/stream`)
 
@@ -116,14 +117,33 @@ Every external dependency degrades to a deterministic mock so the demo cannot cr
 
 Flipping any service to live = drop one env var. See `.env.example`.
 
-## Deploy
+## Environment variables
+
+Every variable is **optional**. With all of them empty, the pipeline runs end-to-end on deterministic mocks. Flipping a service to live = drop one env var. See `.env.example` for the canonical list.
+
+| Variable                       | Powers                  | Default               | Live behavior |
+|---                             |---                      |---                    |---            |
+| `TOKENROUTER_API_KEY`          | Scout, Hardball, Diplomat, Referee, Email polish | (mock) | POSTs OpenAI-compatible chat/completions; any error → mock |
+| `TOKENROUTER_BASE_URL`         | TokenRouter base URL    | `https://api.tokenrouter.io/v1` | Override if the sponsor's URL differs |
+| `TOKENROUTER_QWEN_PREFIX`      | Qwen model id prefix    | `qwen`                | Override if TokenRouter uses e.g. `alibaba/...` |
+| `TOKENROUTER_ZAI_PREFIX`       | Z.ai model id prefix    | `zai`                 | Override if TokenRouter uses e.g. `glm/...` |
+| `EVERMIND_API_KEY`             | Vendor profiles, AE quotes, trash-talk, decisions | (local JSON fallback) | PUTs to Evermind; mirrors locally; any error → local only |
+| `EVERMIND_BASE_URL`            | Evermind base URL       | `https://api.evermind.ai` | Override per sponsor docs |
+| `EVERMIND_PATH_TEMPLATE`       | Key path template       | `/v1/namespaces/{namespace}/keys/{key}` | Override if path shape differs |
+| `NOSANA_ENDPOINT`              | Contract Diff embeddings | (heuristic fallback) | POSTs `{texts}` to `{endpoint}/embed`; expects `{embeddings}` |
+| `BRIGHTDATA_API_KEY`           | Scout (via Person B)    | (fixture)             | Person B's pipeline; we just plumb it through |
+| `QWEN_API_KEY`, `ZAI_API_KEY`  | (currently unused — TokenRouter handles routing) | — | Reserved for direct-call fallback |
+
+## Deploy to Zeabur
 
 ```bash
-# one-time
+# one-time (in your shell, not the agent's)
 zeabur auth login
 
-# from this directory
+# from projects/shadowbuyer/
 zeabur deploy
 ```
 
-The `Dockerfile` exposes port 8000, runs `uvicorn src.app:app`. `zeabur.toml` sets a `/healthz` healthcheck and declares the env-var slots.
+Alternative: connect the GitHub repo in the Zeabur dashboard and every push to `main` redeploys.
+
+The `Dockerfile` exposes port 8000 and runs `uvicorn src.app:app`. `zeabur.toml` declares a `/healthz` healthcheck and lists the env-var slots — set them in the Zeabur project settings, not in the committed file. Per the doc, redeploy hourly during the build; freeze redeploys at 4:00 PM.

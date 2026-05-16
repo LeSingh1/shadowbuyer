@@ -53,6 +53,41 @@ def _service_mode() -> dict[str, bool]:
     }
 
 
+_SPONSOR_MAP = [
+    {"name": "AgentField",  "env": [],                            "role": "Orchestrates the 4 agents via @agent decorators", "owner": "Person A", "code_ref": "every src/agents/*.py"},
+    {"name": "TokenRouter", "env": ["TOKENROUTER_API_KEY"],       "role": "Routes ALL LLM calls (Qwen, Z.ai, OpenAI)",        "owner": "Person A", "code_ref": "src/clients/tokenrouter.py"},
+    {"name": "Qwen Cloud",  "env": ["TOKENROUTER_API_KEY"],       "role": "Scout, Hardball (Qwen3-Max), Referee",            "owner": "Person A", "code_ref": "src/agents/scout.py, negotiator.py"},
+    {"name": "Z.ai",        "env": ["TOKENROUTER_API_KEY"],       "role": "Diplomat (GLM-5.1)",                              "owner": "Person A", "code_ref": "src/agents/negotiator.py:_dp_round"},
+    {"name": "Evermind",    "env": ["EVERMIND_API_KEY"],          "role": "Vendor profiles, AE quotes, trash-talk, decisions","owner": "Person B", "code_ref": "src/memory/evermind.py + pipeline writes"},
+    {"name": "Nosana",      "env": ["NOSANA_ENDPOINT"],           "role": "Clause similarity embeddings",                    "owner": "Person B", "code_ref": "src/agents/contract_diff.py:_nosana_embed"},
+    {"name": "Bright Data", "env": ["BRIGHTDATA_API_KEY"],        "role": "Vendor research (G2, funding, logos)",            "owner": "Person B", "code_ref": "fixtures/observability_vendors_g2.json, scout.run(bright_data_input=...)"},
+    {"name": "Actionbook",  "env": [],                            "role": "Quote Hunter form filling (Person B)",            "owner": "Person B", "code_ref": "fixtures/datadog_ae_response.json + src/agents/quote_hunter.py"},
+    {"name": "Zeabur",      "env": [],                            "role": "Live deployment",                                  "owner": "Person A", "code_ref": "Dockerfile, zeabur.toml"},
+    {"name": "Qoder",       "env": [],                            "role": "Built the codebase (process sponsor)",            "owner": "All",      "code_ref": "(pitch mention)"},
+    {"name": "Butterbase",  "env": [],                            "role": "Frontend dashboard + Gmail (Person C)",           "owner": "Person C", "code_ref": "consumes /api/demo-state, /api/email-draft, /run/stream"},
+]
+
+
+@app.get("/api/sponsor-health")
+def sponsor_health() -> dict[str, Any]:
+    rows = []
+    for s in _SPONSOR_MAP:
+        env_status = "n/a" if not s["env"] else ("live" if all(os.getenv(k) for k in s["env"]) else "mock")
+        rows.append({
+            **s,
+            "env_status": env_status,
+        })
+    counts = {"live": 0, "mock": 0, "n/a": 0}
+    for r in rows:
+        counts[r["env_status"]] = counts.get(r["env_status"], 0) + 1
+    return {
+        "total": len(rows),
+        "counts": counts,
+        "sponsors": rows,
+        "all_eleven_wired": len(rows) == 11,
+    }
+
+
 @app.get("/healthz")
 def healthz() -> dict[str, Any]:
     return {"ok": True, "service": "shadowbuyer", "version": app.version, "services": _service_mode()}
