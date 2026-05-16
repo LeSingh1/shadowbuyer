@@ -1,5 +1,6 @@
 # Multi-stage build: compile the Procure CRM SPA, then serve via nginx.
 # Targets Zeabur Docker. Independent of TanStack Start SSR / Cloudflare Workers.
+# rev 2 — force Zeabur to clone fresh after webhook miss
 
 # ── Stage 1: build the SPA bundle ───────────────────────────────────────────
 FROM node:20-alpine AS builder
@@ -11,6 +12,8 @@ ARG VITE_SHADOWBUYER_URL=https://shadowbuyer.zeabur.app
 ENV VITE_SHADOWBUYER_URL=$VITE_SHADOWBUYER_URL
 
 COPY package.json package-lock.json* bun.lock* ./
+# Repo uses bun (bun.lock present, no package-lock.json). npm install works
+# fine from package.json + dynamically resolves a lockfile.
 RUN npm install --no-audit --no-fund --legacy-peer-deps
 
 COPY . .
